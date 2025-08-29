@@ -201,12 +201,12 @@ def run_agents(state: GraphState) -> Command[Literal["__end__"]]:
 
 
 # Construct the graph: here we put everything together to construct our graph
-graph = StateGraph(GraphState)
-graph.add_node("run_agents", run_agents)
-graph.add_node("validate_input", validate_input)
-graph.add_edge(START, "validate_input")
-# graph.add_edge("validate_input", "run_agents")
-# graph.add_edge("run_agents", END)
+builder = StateGraph(GraphState)
+builder.add_node("run_agents", run_agents)
+builder.add_node("validate_input", validate_input)
+builder.add_edge(START, "validate_input")
+# builder.add_edge("validate_input", "run_agents")
+# builder.add_edge("run_agents", END)
 
 # Compile the graph
-app = graph.compile()
+graph = builder.compile()
