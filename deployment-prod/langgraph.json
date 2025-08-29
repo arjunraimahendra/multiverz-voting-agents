@@ -1,0 +1,10 @@
+{
+    "dockerfile_lines": [],
+    "graphs": {
+      "voting_agents": "./graph.py:graph"
+    },
+    "python_version": "3.13",
+    "dependencies": [
+      "."
+    ]
+  }
