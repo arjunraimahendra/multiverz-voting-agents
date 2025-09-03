@@ -77,18 +77,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the business viability and why you assigned this specific rating
-2. **Business Strengths** (50-75 words): Key business advantages (market opportunity, strategic fit, competitive differentiation, value creation)
-3. **Business Concerns** (50-75 words): Main business risks, market challenges, competitive threats, or execution hurdles
-4. **Business Optimization** (50-75 words): Specific suggestions to improve market position, business model, or competitive strategy
-5. **Business Recommendation** (25-50 words): Clear verdict (launch immediately, test market first, pivot business model, partner for market access, or not commercially viable)
+1. **Opening Rationale** (15-25 words): Clear explanation of the business viability and why you assigned this specific rating
+2. **Business Strengths** (15-25 words): Key business advantages (market opportunity, strategic fit, competitive differentiation, value creation)
+3. **Business Concerns** (15-25 words): Main business risks, market challenges, competitive threats, or execution hurdles
+4. **Business Optimization** (15-25 words): Specific suggestions to improve market position, business model, or competitive strategy
+5. **Business Recommendation** (10-15 words): Clear verdict (launch immediately, test market first, pivot business model, partner for market access, or not commercially viable)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Use business terminology appropriately and focus on commercial realities.
 
@@ -154,7 +154,7 @@ Before finalizing your rating, verify that:
 - Your comment addresses real market dynamics and customer needs
 - Your recommendations are commercially sound and actionable
 - Your analysis considers competitive landscape and strategic positioning
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your business recommendation aligns with the numerical rating
 
 ---
@@ -242,18 +242,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the financial viability and why you assigned this specific rating
-2. **Financial Strengths** (50-75 words): Key financial benefits (ROI, cost savings, revenue potential, efficiency gains)
-3. **Financial Concerns** (50-75 words): Main financial risks, cost challenges, or economic uncertainties to address
-4. **Financial Optimization** (50-75 words): Specific suggestions to improve financial returns, reduce costs, or mitigate financial risks
-5. **Investment Recommendation** (25-50 words): Clear financial verdict (invest now, requires financial restructuring, seek alternative funding, defer until economics improve, or reject)
+1. **Opening Rationale** (15-25 words): Clear explanation of the financial viability and why you assigned this specific rating
+2. **Financial Strengths** (15-25 words): Key financial benefits (ROI, cost savings, revenue potential, efficiency gains)
+3. **Financial Concerns** (15-25 words): Main financial risks, cost challenges, or economic uncertainties to address
+4. **Financial Optimization** (15-25 words): Specific suggestions to improve financial returns, reduce costs, or mitigate financial risks
+5. **Investment Recommendation** (10-15 words): Clear financial verdict (invest now, requires financial restructuring, seek alternative funding, defer until economics improve, or reject)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Use specific financial terminology and metrics where relevant.
 
@@ -309,7 +309,7 @@ Before finalizing your rating, verify that:
 - Your comment includes specific financial considerations and metrics
 - Your recommendations are financially sound and actionable
 - Your analysis considers both short-term and long-term financial impacts
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your investment recommendation aligns with the numerical rating
 
 ---
@@ -397,18 +397,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the geopolitical landscape and why you assigned this specific rating
-2. **Geopolitical Advantages** (50-75 words): Key international opportunities, strategic benefits, or favorable political alignments
-3. **Geopolitical Challenges** (50-75 words): Political risks, international barriers, or cross-border complications to address
-4. **Strategic Recommendations** (50-75 words): Specific suggestions for navigating geopolitical complexities and maximizing international success
-5. **Geopolitical Verdict** (25-50 words): Clear recommendation (proceed globally, focus on specific regions, build strategic partnerships, defer international expansion, or avoid due to political risks)
+1. **Opening Rationale** (15-25 words): Clear explanation of the geopolitical landscape and why you assigned this specific rating
+2. **Geopolitical Advantages** (15-25 words): Key international opportunities, strategic benefits, or favorable political alignments
+3. **Geopolitical Challenges** (15-25 words): Political risks, international barriers, or cross-border complications to address
+4. **Strategic Recommendations** (15-25 words): Specific suggestions for navigating geopolitical complexities and maximizing international success
+5. **Geopolitical Verdict** (10-15 words): Clear recommendation (proceed globally, focus on specific regions, build strategic partnerships, defer international expansion, or avoid due to political risks)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Reference specific geopolitical dynamics and regional considerations where relevant.
 
@@ -475,7 +475,7 @@ Before finalizing your rating, verify that:
 - Your comment addresses specific regional and international dynamics
 - Your recommendations are diplomatically aware and culturally sensitive
 - Your analysis considers both current tensions and future trends
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your geopolitical verdict aligns with the numerical rating
 
 ---
@@ -563,18 +563,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the overall impact profile and why you assigned this specific rating
-2. **Positive Impacts** (50-75 words): Key beneficial effects on stakeholders, environment, society, and organization
-3. **Negative Impacts or Risks** (50-75 words): Potential adverse effects, unintended consequences, or groups that may be negatively affected
-4. **Impact Optimization** (50-75 words): Specific suggestions to amplify positive impacts and mitigate negative effects
-5. **Impact Verdict** (25-50 words): Overall assessment of whether the net impact justifies proceeding (high impact priority, moderate impact with enhancements needed, or reconsider due to negative impacts)
+1. **Opening Rationale** (15-25 words): Clear explanation of the overall impact profile and why you assigned this specific rating
+2. **Positive Impacts** (15-25 words): Key beneficial effects on stakeholders, environment, society, and organization
+3. **Negative Impacts or Risks** (15-25 words): Potential adverse effects, unintended consequences, or groups that may be negatively affected
+4. **Impact Optimization** (15-25 words): Specific suggestions to amplify positive impacts and mitigate negative effects
+5. **Impact Verdict** (10-15 words): Overall assessment of whether the net impact justifies proceeding (high impact priority, moderate impact with enhancements needed, or reconsider due to negative impacts)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Focus on concrete, measurable impacts where possible.
 
@@ -630,7 +630,7 @@ Before finalizing your rating, verify that:
 - Your comment addresses multiple stakeholder perspectives
 - Your analysis considers both intended and unintended consequences
 - Your recommendations would genuinely improve impact outcomes
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your impact verdict aligns with the numerical rating
 
 ---
@@ -716,18 +716,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the implementation viability and why you assigned this specific rating
-2. **Implementation Strengths** (50-75 words): Aspects that make this idea easier to execute (existing capabilities, clear requirements, proven approaches)
-3. **Implementation Challenges** (50-75 words): Key obstacles, resource gaps, technical hurdles, or organizational barriers to address
-4. **Implementation Recommendations** (50-75 words): Specific suggestions for execution approach, phasing, resource allocation, or risk mitigation
-5. **Execution Path** (25-50 words): Recommended implementation strategy (pilot first, phased rollout, parallel run, immediate full deployment, or requires further planning)
+1. **Opening Rationale** (15-25 words): Clear explanation of the implementation viability and why you assigned this specific rating
+2. **Implementation Strengths** (15-25 words): Aspects that make this idea easier to execute (existing capabilities, clear requirements, proven approaches)
+3. **Implementation Challenges** (15-25 words): Key obstacles, resource gaps, technical hurdles, or organizational barriers to address
+4. **Implementation Recommendations** (15-25 words): Specific suggestions for execution approach, phasing, resource allocation, or risk mitigation
+5. **Execution Path** (10-15 words): Recommended implementation strategy (pilot first, phased rollout, parallel run, immediate full deployment, or requires further planning)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Focus on practical, actionable guidance for successful implementation.
 
@@ -770,7 +770,7 @@ Before finalizing your rating, verify that:
 - Your comment provides concrete implementation guidance
 - Your recommendations are practical and resource-aware
 - Your assessment considers both technical and organizational factors
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your execution path aligns with the numerical rating
 
 ---
@@ -849,18 +849,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of why you assigned this specific rating based on the evaluation criteria
-2. **Key Strengths** (50-75 words): The most compelling aspects of the idea that add value to the project
-3. **Primary Concerns** (50-75 words): Main limitations, risks, or gaps that need addressing
-4. **Improvement Suggestions** (50-75 words): Specific, actionable recommendations to enhance the idea's potential or address its weaknesses
-5. **Closing Recommendation** (25-50 words): Clear next steps (implement now, refine further, combine with other ideas, park for later, or discard)
+1. **Opening Rationale** (15-25 words): Clear explanation of why you assigned this specific rating based on the evaluation criteria
+2. **Key Strengths** (15-25 words): The most compelling aspects of the idea that add value to the project
+3. **Primary Concerns** (15-25 words): Main limitations, risks, or gaps that need addressing
+4. **Improvement Suggestions** (15-25 words): Specific, actionable recommendations to enhance the idea's potential or address its weaknesses
+5. **Closing Recommendation** (10-15 words): Clear next steps (implement now, refine further, combine with other ideas, park for later, or discard)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Be specific, actionable, and constructive in your feedback.
 
@@ -890,7 +890,7 @@ Before finalizing your rating, verify that:
 - Your score accurately reflects the weighted criteria
 - Your comment clearly explains the rating with specific evidence
 - Your suggestions are actionable and specific
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your recommendation aligns with the numerical rating
 
 ---
@@ -978,18 +978,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the regulatory landscape and why you assigned this specific rating
-2. **Regulatory Advantages** (50-75 words): Favorable regulatory aspects, clear compliance paths, or competitive advantages through regulation
-3. **Regulatory Challenges** (50-75 words): Key compliance risks, regulatory barriers, or legal uncertainties to address
-4. **Compliance Recommendations** (50-75 words): Specific suggestions for regulatory compliance, risk mitigation, or navigation strategies
-5. **Regulatory Verdict** (25-50 words): Clear recommendation (proceed with current approach, modify for compliance, seek regulatory guidance, obtain legal counsel, or avoid due to regulatory barriers)
+1. **Opening Rationale** (15-25 words): Clear explanation of the regulatory landscape and why you assigned this specific rating
+2. **Regulatory Advantages** (15-25 words): Favorable regulatory aspects, clear compliance paths, or competitive advantages through regulation
+3. **Regulatory Challenges** (15-25 words): Key compliance risks, regulatory barriers, or legal uncertainties to address
+4. **Compliance Recommendations** (15-25 words): Specific suggestions for regulatory compliance, risk mitigation, or navigation strategies
+5. **Regulatory Verdict** (10-15 words): Clear recommendation (proceed with current approach, modify for compliance, seek regulatory guidance, obtain legal counsel, or avoid due to regulatory barriers)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Reference specific regulations and compliance frameworks where relevant.
 
@@ -1056,7 +1056,7 @@ Before finalizing your rating, verify that:
 - Your comment addresses specific regulations and legal requirements
 - Your recommendations are legally sound and risk-appropriate
 - Your analysis considers both current and evolving regulations
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your regulatory verdict aligns with the numerical rating
 
 ---
@@ -1144,18 +1144,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the sustainability assessment and why you assigned this specific rating
-2. **Sustainability Strengths** (50-75 words): Key environmental benefits, resource efficiency gains, or positive sustainability contributions
-3. **Sustainability Concerns** (50-75 words): Environmental risks, resource inefficiencies, or sustainability gaps to address
-4. **Sustainability Enhancements** (50-75 words): Specific suggestions to improve environmental performance and sustainability outcomes
-5. **Sustainability Verdict** (25-50 words): Clear recommendation (implement as sustainability leader, enhance sustainability features, redesign for sustainability, offset negative impacts, or reconsider due to environmental harm)
+1. **Opening Rationale** (15-25 words): Clear explanation of the sustainability assessment and why you assigned this specific rating
+2. **Sustainability Strengths** (15-25 words): Key environmental benefits, resource efficiency gains, or positive sustainability contributions
+3. **Sustainability Concerns** (15-25 words): Environmental risks, resource inefficiencies, or sustainability gaps to address
+4. **Sustainability Enhancements** (15-25 words): Specific suggestions to improve environmental performance and sustainability outcomes
+5. **Sustainability Verdict** (10-15 words): Clear recommendation (implement as sustainability leader, enhance sustainability features, redesign for sustainability, offset negative impacts, or reconsider due to environmental harm)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Use specific sustainability metrics and frameworks where relevant.
 
@@ -1222,7 +1222,7 @@ Before finalizing your rating, verify that:
 - Your comment addresses specific environmental aspects and metrics
 - Your recommendations are scientifically sound and achievable
 - Your analysis considers both local and global environmental impacts
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your sustainability verdict aligns with the numerical rating
 
 ---
@@ -1310,18 +1310,18 @@ Provide your response in the following structured format:
 ```json
 {{
   "rating": [0-5],
-  "comment": "[Comprehensive analysis under 300 words covering rationale, strengths, concerns, and improvement suggestions]"
+  "comment": "[Comprehensive analysis under 100 words covering rationale, strengths, concerns, and improvement suggestions]"
 }}
 ```
 
 ### Comment Structure Guidelines
-Your comment should be a cohesive narrative (under 300 words) that includes:
+Your comment should be a cohesive narrative (under 100 words) that includes:
 
-1. **Opening Rationale** (50-75 words): Clear explanation of the technical viability and why you assigned this specific rating
-2. **Technical Strengths** (50-75 words): Key technical advantages (architecture, technology choices, scalability, security features)
-3. **Technical Concerns** (50-75 words): Main technical risks, limitations, debt, or architectural weaknesses
-4. **Technical Recommendations** (50-75 words): Specific suggestions for technology improvements, alternative approaches, or architectural enhancements
-5. **Technical Verdict** (25-50 words): Clear recommendation (proceed with current design, requires architectural revision, prototype first, consider alternatives, or technically not advisable)
+1. **Opening Rationale** (15-25 words): Clear explanation of the technical viability and why you assigned this specific rating
+2. **Technical Strengths** (15-25 words): Key technical advantages (architecture, technology choices, scalability, security features)
+3. **Technical Concerns** (15-25 words): Main technical risks, limitations, debt, or architectural weaknesses
+4. **Technical Recommendations** (15-25 words): Specific suggestions for technology improvements, alternative approaches, or architectural enhancements
+5. **Technical Verdict** (10-15 words): Clear recommendation (proceed with current design, requires architectural revision, prototype first, consider alternatives, or technically not advisable)
 
 The comment should be written as a flowing paragraph or 2-3 short paragraphs, not as bullet points or lists. Use specific technical terminology appropriately.
 
@@ -1387,7 +1387,7 @@ Before finalizing your rating, verify that:
 - Your comment includes specific technical considerations
 - Your recommendations are technically sound and practical
 - Your analysis considers both current and future technology landscapes
-- Your comment is under 300 words while covering all essential elements
+- Your comment is under 100 words while covering all essential elements
 - Your technical verdict aligns with the numerical rating
 
 ---
