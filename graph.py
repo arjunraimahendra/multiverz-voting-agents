@@ -4,19 +4,8 @@ from langchain_openai import ChatOpenAI
 from langgraph.types import Command
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from pydantic.alias_generators import to_camel
-# from IPython.display import Image, display
-# from dotenv import load_dotenv
-# load_dotenv()
+from trustcall import create_extractor
 
-
-# from models.models import (
-#     Category,
-#     Idea,
-#     ProjectIdeas,
-#     Rating,
-#     Agent,
-#     AgentRatings
-# )
 
 from prompts import (
     business_agent_system_prompt,
@@ -110,6 +99,9 @@ class Rating(BaseModel):
     rating: int
     comment: str
 
+class RatingsList(BaseModel):
+    ratings: List[Rating]
+
 class Agent(BaseModel):
     agentId: int
     agentName: str
@@ -135,12 +127,17 @@ class GraphState(TypedDict):
 llm = ChatOpenAI(model="gpt-4o", temperature=0.7)
 
 # Structured Output
-class IdeaRating(BaseModel):
-    rating: int
-    comment: str
+# Create a Trustcall extractor
+# (model would be your LLM, e.g., an OpenAI model)
+rating_extractor = create_extractor(
+    llm, 
+    tools=[RatingsList],
+    tool_choice="RatingsList",
+)
 
-rating_llm = llm.with_structured_output(IdeaRating)
-
+#############################
+# Create Graph
+#############################
 
 def validate_input(state: GraphState) -> Command[Literal["run_agents", "__end__"]]:
     print(" ========= Validate Input ========= ")
@@ -163,42 +160,31 @@ def run_agents(state: GraphState) -> Command[Literal["__end__"]]:
     agent_outputs = {"agents": []}
 
     for agent_id in state["project_ideas_input"].agents:
-        rating_ideas_list = []
+        # rating_ideas_list = []
         agent_info = AGENT_MAPPING[agent_id]
 
-        for idea in state["project_ideas_input"].ideas:
-            agent_prompt=agent_info["prompt"].format(
+        agent_prompt=agent_info["prompt"].format(
                 project_name=state["project_ideas_input"].project_name,
                 project_description=state["project_ideas_input"].project_description,
-                idea_title=idea.title,
-                idea_summary=idea.summary,
-                idea_categories= ', '.join([category.name for category in idea.categories if category])
+                list_of_ideas = "\n".join([idea.model_dump_json(indent=2) for idea in state["project_ideas_input"].ideas])
             )
+        
+        rating_output = rating_extractor.invoke(agent_prompt)
 
-            rating_output = rating_llm.invoke(agent_prompt)
-            # print("Rating LLM output: ", rating_output.model_dump_json(indent=2))
-            
-            rating_ideas_list.append(Rating(
-                    ideaId=idea.id_,
-                    rating=rating_output.rating,
-                    comment=rating_output.comment
-                )
-            )
         agent_outputs["agents"].append(Agent(
             agentId=agent_id,
             agentName=agent_info["name"],
-            ratings=rating_ideas_list,
+            ratings=rating_output["responses"][0].ratings,
         ))
-        # print("Agent output: ", agent_outputs["agents"][-1].model_dump_json(indent=2))
+        print("Agent output: ", agent_outputs["agents"][-1].model_dump_json(indent=2))
 
-    # print("All agent outputs: ", agent_outputs)
+    print("All agent outputs: ", agent_outputs)
 
     return Command(
         goto=END,
         update={"output": AgentRatings.model_validate(agent_outputs)}
     )
     
-
 
 # Construct the graph: here we put everything together to construct our graph
 builder = StateGraph(GraphState)
