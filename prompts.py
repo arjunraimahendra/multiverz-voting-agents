@@ -38,28 +38,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative differences.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Business Perspective)
-Assess the relative business innovation potential:
-- **Market Differentiation**: How unique is this compared to other ideas and market?
-- **Business Model Innovation**: Does it introduce new ways to create/capture value?
-- **Competitive Disruption**: Does it change market dynamics or customer expectations?
-- **First-Mover Advantage**: Can this establish market leadership?
+1. PRACTICALITY (Market Execution) - 50% weight
+Evaluate implementation feasibility from a business standpoint:
 
-#### 2. PRACTICALITY (Market Execution)
-Evaluate relative implementation feasibility:
-- **Market Readiness**: Are customers ready to adopt this?
-- **Go-to-Market Complexity**: How executable is the market entry strategy?
-- **Resource Requirements**: What investment/capabilities are needed?
-- **Time to Revenue**: How quickly can this generate returns?
+Market Readiness: Are customers ready to adopt this?
+Go-to-Market Complexity: How executable is the market entry strategy?
+Resource Requirements: What investment/capabilities are needed?
+Time to Revenue: How quickly can this generate returns?
 
-#### 3. SCALE OF IMPACT (Market Potential)
-Measure the comparative business impact:
-- **Total Addressable Market (TAM)**: Size of the opportunity
-- **Market Growth Potential**: Expansion possibilities
-- **Revenue Scalability**: Ability to grow revenues exponentially
-- **Market Transformation**: Potential to create new markets or categories
+Scoring Guide:
+
+0-20: Extremely difficult market entry with prohibitive barriers
+21-40: High complexity requiring significant market education/resources
+41-60: Moderate complexity with manageable execution challenges
+61-80: Straightforward implementation with clear market path
+81-100: Immediately executable with existing market infrastructure
+
+2. SCALE OF IMPACT (Market Potential) - 30% weight
+Measure the potential business impact:
+
+Total Addressable Market (TAM): Size of the opportunity
+Market Growth Potential: Expansion possibilities
+Revenue Scalability: Ability to grow revenues exponentially
+Market Transformation: Potential to create new markets or categories
+
+Scoring Guide:
+
+0-20: Niche market with minimal growth potential
+21-40: Small market segment with limited expansion
+41-60: Moderate market size with regional potential
+61-80: Large market opportunity with strong growth prospects
+81-100: Massive global market with transformative potential
+
+3. INNOVATION (Business Perspective) - 20% weight
+Assess the business innovation potential:
+
+Market Differentiation: How unique is this in the marketplace?
+Business Model Innovation: Does it introduce new ways to create/capture value?
+Competitive Disruption: Does it change market dynamics or customer expectations?
+First-Mover Advantage: Can this establish market leadership?
+
+Scoring Guide:
+
+0-20: Replicates existing business models with no differentiation
+21-40: Minor variations on existing market offerings
+41-60: Moderate innovation with some unique value propositions
+61-80: Significant market innovation with clear differentiation
+81-100: Breakthrough business innovation that redefines markets
 
 ## Comparative Evaluation Process
 
@@ -82,7 +109,7 @@ For each dimension (Innovation, Practicality, Scale):
 - Use the full scoring range to show relative differences
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure final scores maintain meaningful separation.
 
 ## Output Format
@@ -277,49 +304,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative financial merit.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Financial Perspective)
-Assess the financial innovation potential:
-- **New Revenue Models**: Does this create novel monetization approaches?
-- **Cost Structure Innovation**: Does it fundamentally change cost economics?
-- **Financial Efficiency Breakthrough**: Does it deliver step-change improvements in capital efficiency?
-- **Economic Moat Creation**: Does it establish sustainable financial advantages?
-
-*Scoring Guide:*
-- 0-20: Replicates existing financial models with no economic advantage
-- 21-40: Minor improvements to current financial approaches
-- 41-60: Moderate financial innovation with measurable economic benefits
-- 61-80: Significant financial innovation with substantial value creation
-- 81-100: Revolutionary economic model that transforms financial returns
-
-#### 2. PRACTICALITY (Financial Implementation)
+1. PRACTICALITY (Financial Implementation) - 50% weight
 Evaluate financial feasibility and execution:
-- **Capital Requirements**: What funding is needed and is it obtainable?
-- **Payback Period**: How quickly will investment be recovered?
-- **Cash Flow Profile**: When does this become cash positive?
-- **Financial Risk Management**: How controllable are the financial risks?
 
-*Scoring Guide:*
-- 0-20: Prohibitive capital needs with unmanageable financial risks
-- 21-40: High funding requirements with extended negative cash flow
-- 41-60: Moderate investment with acceptable payback timeline
-- 61-80: Low capital needs with rapid path to positive returns
-- 81-100: Minimal investment with immediate positive cash flow
+Capital Requirements: What funding is needed and is it obtainable?
+Payback Period: How quickly will investment be recovered?
+Cash Flow Profile: When does this become cash positive?
+Financial Risk Management: How controllable are the financial risks?
 
-#### 3. SCALE OF IMPACT (Economic Value)
+Scoring Guide:
+
+0-20: Prohibitive capital needs with unmanageable financial risks
+21-40: High funding requirements with extended negative cash flow
+41-60: Moderate investment with acceptable payback timeline
+61-80: Low capital needs with rapid path to positive returns
+81-100: Minimal investment with immediate positive cash flow
+
+2. SCALE OF IMPACT (Economic Value) - 30% weight
 Measure the comparative financial impact:
-- **Total Economic Value**: Size of financial opportunity
-- **ROI Potential**: Return multiples achievable
-- **Margin Expansion**: Profitability improvement potential
-- **Compound Value Creation**: Long-term economic benefits
 
-*Scoring Guide:*
-- 0-20: Marginal returns with limited financial upside
-- 21-40: Below-hurdle returns with modest value creation
-- 41-60: Market-rate returns with reasonable economic benefits
-- 61-80: Above-market returns with strong value generation
-- 81-100: Exceptional returns with transformative economic impact
+Total Economic Value: Size of financial opportunity
+ROI Potential: Return multiples achievable
+Margin Expansion: Profitability improvement potential
+Compound Value Creation: Long-term economic benefits
+
+Scoring Guide:
+
+0-20: Marginal returns with limited financial upside
+21-40: Below-hurdle returns with modest value creation
+41-60: Market-rate returns with reasonable economic benefits
+61-80: Above-market returns with strong value generation
+81-100: Exceptional returns with transformative economic impact
+
+3. INNOVATION (Financial Perspective) - 20% weight
+Assess the financial innovation potential:
+
+New Revenue Models: Does this create novel monetization approaches?
+Cost Structure Innovation: Does it fundamentally change cost economics?
+Financial Efficiency Breakthrough: Does it deliver step-change improvements in capital efficiency?
+Economic Moat Creation: Does it establish sustainable financial advantages?
+
+Scoring Guide:
+
+0-20: Replicates existing financial models with no economic advantage
+21-40: Minor improvements to current financial approaches
+41-60: Moderate financial innovation with measurable economic benefits
+61-80: Significant financial innovation with substantial value creation
+81-100: Revolutionary economic model that transforms financial returns
 
 ## Comparative Evaluation Process
 
@@ -342,7 +375,7 @@ For each dimension:
 - Use full range to show relative financial merit
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear financial differentiation.
 
 ## Output Format
@@ -526,49 +559,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative geopolitical merit.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Geopolitical Perspective)
-Assess the geopolitical innovation potential:
-- **Diplomatic Innovation**: Does this create new forms of international cooperation?
-- **Cross-Border Model Innovation**: Does it pioneer new ways to operate globally?
-- **Sovereignty Enhancement**: Does it strengthen national/regional autonomy?
-- **International Norm Setting**: Could this establish new global standards?
-
-*Scoring Guide:*
-- 0-20: Reinforces problematic geopolitical dependencies
-- 21-40: Minor improvements to existing international approaches
-- 41-60: Moderate innovation in cross-border operations
-- 61-80: Significant advancement in international cooperation models
-- 81-100: Revolutionary approach transforming global political dynamics
-
-#### 2. PRACTICALITY (International Implementation)
+1. PRACTICALITY (International Implementation) - 50% weight
 Evaluate cross-border feasibility:
-- **Political Acceptability**: Will diverse political systems embrace this?
-- **Regulatory Harmonization**: How easily can this navigate different regulations?
-- **Security Clearance**: Can this pass national security reviews globally?
-- **Cultural Portability**: How well does this translate across cultures?
 
-*Scoring Guide:*
-- 0-20: Blocked by insurmountable political/regulatory barriers
-- 21-40: Major international friction with limited deployment potential
-- 41-60: Moderate challenges requiring significant diplomatic effort
-- 61-80: Clear pathways with manageable political complexity
-- 81-100: Seamless global deployment with political tailwinds
+Political Acceptability: Will diverse political systems embrace this?
+Regulatory Harmonization: How easily can this navigate different regulations?
+Security Clearance: Can this pass national security reviews globally?
+Cultural Portability: How well does this translate across cultures?
 
-#### 3. SCALE OF IMPACT (Global Strategic Value)
+Scoring Guide:
+
+0-20: Blocked by insurmountable political/regulatory barriers
+21-40: Major international friction with limited deployment potential
+41-60: Moderate challenges requiring significant diplomatic effort
+61-80: Clear pathways with manageable political complexity
+81-100: Seamless global deployment with political tailwinds
+
+2. SCALE OF IMPACT (Global Strategic Value) - 30% weight
 Measure comparative geopolitical impact:
-- **Geographic Reach**: How many regions/countries can adopt this?
-- **Strategic Autonomy**: Does this reduce critical dependencies?
-- **Soft Power Generation**: What diplomatic capital does this create?
-- **International Stability**: Does this enhance or disrupt global order?
 
-*Scoring Guide:*
-- 0-20: Limited to single region with destabilizing effects
-- 21-40: Few countries with minimal strategic value
-- 41-60: Multiple regions with moderate strategic benefits
-- 61-80: Most major markets with significant strategic advantages
-- 81-100: Global transformation enhancing international cooperation
+Geographic Reach: How many regions/countries can adopt this?
+Strategic Autonomy: Does this reduce critical dependencies?
+Soft Power Generation: What diplomatic capital does this create?
+International Stability: Does this enhance or disrupt global order?
+
+Scoring Guide:
+
+0-20: Limited to single region with destabilizing effects
+21-40: Few countries with minimal strategic value
+41-60: Multiple regions with moderate strategic benefits
+61-80: Most major markets with significant strategic advantages
+81-100: Global transformation enhancing international cooperation
+
+3. INNOVATION (Geopolitical Perspective) - 20% weight
+Assess the geopolitical innovation potential:
+
+Diplomatic Innovation: Does this create new forms of international cooperation?
+Cross-Border Model Innovation: Does it pioneer new ways to operate globally?
+Sovereignty Enhancement: Does it strengthen national/regional autonomy?
+International Norm Setting: Could this establish new global standards?
+
+Scoring Guide:
+
+0-20: Reinforces problematic geopolitical dependencies
+21-40: Minor improvements to existing international approaches
+41-60: Moderate innovation in cross-border operations
+61-80: Significant advancement in international cooperation models
+81-100: Revolutionary approach transforming global political dynamics
 
 ## Comparative Evaluation Process
 
@@ -591,7 +630,7 @@ For each dimension:
 - Use full range to show relative geopolitical positioning
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear geopolitical differentiation.
 
 ## Output Format
@@ -783,49 +822,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative impact merit.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Impact Perspective)
-Assess the impact innovation potential:
-- **Novel Impact Pathways**: Does this create new ways to generate positive change?
-- **Systemic Change Innovation**: Does it address root causes versus symptoms?
-- **Stakeholder Engagement Innovation**: Does it pioneer inclusive impact approaches?
-- **Impact Measurement Innovation**: Does it advance how we understand and track effects?
-
-*Scoring Guide:*
-- 0-20: Replicates existing impact models with no improvement
-- 21-40: Minor enhancements to current impact approaches
-- 41-60: Moderate innovation in creating positive change
-- 61-80: Significant advancement in impact generation methods
-- 81-100: Revolutionary approach transforming how positive impact is achieved
-
-#### 2. PRACTICALITY (Impact Implementation)
+1. PRACTICALITY (Impact Implementation) - 50% weight
 Evaluate feasibility of achieving intended impacts:
-- **Impact Delivery Certainty**: How likely are the positive impacts to materialize?
-- **Mitigation Feasibility**: Can negative impacts be effectively managed?
-- **Stakeholder Readiness**: Are beneficiaries ready to receive intended benefits?
-- **Impact Timeline**: How quickly will meaningful impacts be realized?
 
-*Scoring Guide:*
-- 0-20: Highly uncertain impact delivery with unmanageable negative effects
-- 21-40: Difficult impact realization with significant mitigation challenges
-- 41-60: Moderate certainty with acceptable implementation complexity
-- 61-80: Clear impact pathway with manageable implementation
-- 81-100: Immediate, certain positive impacts with minimal risks
+Impact Delivery Certainty: How likely are the positive impacts to materialize?
+Mitigation Feasibility: Can negative impacts be effectively managed?
+Stakeholder Readiness: Are beneficiaries ready to receive intended benefits?
+Impact Timeline: How quickly will meaningful impacts be realized?
 
-#### 3. SCALE OF IMPACT (Magnitude and Reach)
+Scoring Guide:
+
+0-20: Highly uncertain impact delivery with unmanageable negative effects
+21-40: Difficult impact realization with significant mitigation challenges
+41-60: Moderate certainty with acceptable implementation complexity
+61-80: Clear impact pathway with manageable implementation
+81-100: Immediate, certain positive impacts with minimal risks
+
+2. SCALE OF IMPACT (Magnitude and Reach) - 30% weight
 Measure the comparative impact magnitude:
-- **Beneficiary Reach**: Number and diversity of stakeholders positively affected
-- **Depth of Change**: Transformational versus incremental improvements
-- **Sustainability**: Long-term versus temporary impacts
-- **Multiplier Effects**: Cascade and spillover benefits
 
-*Scoring Guide:*
-- 0-20: Minimal positive impact or net negative effects
-- 21-40: Limited beneficiaries with marginal improvements
-- 41-60: Moderate reach with meaningful but not transformative change
-- 61-80: Broad positive impact with significant improvements
-- 81-100: Transformational change affecting vast populations/ecosystems
+Beneficiary Reach: Number and diversity of stakeholders positively affected
+Depth of Change: Transformational versus incremental improvements
+Sustainability: Long-term versus temporary impacts
+Multiplier Effects: Cascade and spillover benefits
+
+Scoring Guide:
+
+0-20: Minimal positive impact or net negative effects
+21-40: Limited beneficiaries with marginal improvements
+41-60: Moderate reach with meaningful but not transformative change
+61-80: Broad positive impact with significant improvements
+81-100: Transformational change affecting vast populations/ecosystems
+
+3. INNOVATION (Impact Perspective) - 20% weight
+Assess the impact innovation potential:
+
+Novel Impact Pathways: Does this create new ways to generate positive change?
+Systemic Change Innovation: Does it address root causes versus symptoms?
+Stakeholder Engagement Innovation: Does it pioneer inclusive impact approaches?
+Impact Measurement Innovation: Does it advance how we understand and track effects?
+
+Scoring Guide:
+
+0-20: Replicates existing impact models with no improvement
+21-40: Minor enhancements to current impact approaches
+41-60: Moderate innovation in creating positive change
+61-80: Significant advancement in impact generation methods
+81-100: Revolutionary approach transforming how positive impact is achieved
 
 ## Comparative Evaluation Process
 
@@ -848,7 +893,7 @@ For each dimension:
 - Use full range to show relative impact differences
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear impact differentiation.
 
 ## Output Format
@@ -1040,49 +1085,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative implementation feasibility.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Implementation Perspective)
-Assess the implementation innovation potential:
-- **Execution Method Innovation**: Does this introduce novel implementation approaches?
-- **Technical Architecture Innovation**: Does it pioneer new technical patterns?
-- **Deployment Model Innovation**: Does it create new ways to roll out solutions?
-- **Integration Innovation**: Does it solve integration challenges in new ways?
-
-*Scoring Guide:*
-- 0-20: Uses outdated or problematic implementation approaches
-- 21-40: Standard implementation with no innovation
-- 41-60: Moderate innovation in execution methods
-- 61-80: Significant advancement in implementation techniques
-- 81-100: Revolutionary implementation approach setting new standards
-
-#### 2. PRACTICALITY (Execution Feasibility)
+1. PRACTICALITY (Execution Feasibility) - 50% weight
 Evaluate implementation practicality:
-- **Resource Availability**: Are required skills and tools readily accessible?
-- **Technical Readiness**: Can current infrastructure support this?
-- **Timeline Realism**: Can this be implemented in reasonable timeframes?
-- **Risk Manageability**: Are implementation risks controllable?
 
-*Scoring Guide:*
-- 0-20: Nearly impossible to implement with current constraints
-- 21-40: Very difficult requiring major capability building
-- 41-60: Moderate difficulty with significant preparation needed
-- 61-80: Straightforward with minor adjustments required
-- 81-100: Immediately executable with existing resources
+Resource Availability: Are required skills and tools readily accessible?
+Technical Readiness: Can current infrastructure support this?
+Timeline Realism: Can this be implemented in reasonable timeframes?
+Risk Manageability: Are implementation risks controllable?
 
-#### 3. SCALE OF IMPACT (Implementation Leverage)
+Scoring Guide:
+
+0-20: Nearly impossible to implement with current constraints
+21-40: Very difficult requiring major capability building
+41-60: Moderate difficulty with significant preparation needed
+61-80: Straightforward with minor adjustments required
+81-100: Immediately executable with existing resources
+
+2. SCALE OF IMPACT (Implementation Leverage) - 30% weight
 Measure the implementation impact:
-- **Deployment Reach**: How widely can this be rolled out?
-- **Reusability**: Can implementation be templated and repeated?
-- **Platform Effect**: Does this enable other implementations?
-- **Technical Debt Impact**: Does this reduce or increase future complexity?
 
-*Scoring Guide:*
-- 0-20: Single-use implementation with no leverage
-- 21-40: Limited reusability with local impact only
-- 41-60: Moderate scalability across some areas
-- 61-80: Highly scalable with broad deployment potential
-- 81-100: Universal implementation framework enabling everything else
+Deployment Reach: How widely can this be rolled out?
+Reusability: Can implementation be templated and repeated?
+Platform Effect: Does this enable other implementations?
+Technical Debt Impact: Does this reduce or increase future complexity?
+
+Scoring Guide:
+
+0-20: Single-use implementation with no leverage
+21-40: Limited reusability with local impact only
+41-60: Moderate scalability across some areas
+61-80: Highly scalable with broad deployment potential
+81-100: Universal implementation framework enabling everything else
+
+3. INNOVATION (Implementation Perspective) - 20% weight
+Assess the implementation innovation potential:
+
+Execution Method Innovation: Does this introduce novel implementation approaches?
+Technical Architecture Innovation: Does it pioneer new technical patterns?
+Deployment Model Innovation: Does it create new ways to roll out solutions?
+Integration Innovation: Does it solve integration challenges in new ways?
+
+Scoring Guide:
+
+0-20: Uses outdated or problematic implementation approaches
+21-40: Standard implementation with no innovation
+41-60: Moderate innovation in execution methods
+61-80: Significant advancement in implementation techniques
+81-100: Revolutionary implementation approach setting new standards
 
 ## Comparative Evaluation Process
 
@@ -1105,7 +1156,7 @@ For each dimension:
 - Use full range to show relative implementation difficulty
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear implementation differentiation.
 
 ## Output Format
@@ -1297,49 +1348,50 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative innovation merit.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Novelty and Creativity)
-Assess the innovation breakthrough potential:
-- **Conceptual Novelty**: How original is this compared to existing solutions?
-- **Creative Problem-Solving**: Does it approach challenges in unprecedented ways?
-- **Paradigm Shift Potential**: Could this fundamentally change how things are done?
-- **Knowledge Advancement**: Does it push boundaries of current understanding?
-
-*Scoring Guide:*
-- 0-20: Copies existing solutions with no innovation
-- 21-40: Minor variations on established approaches
-- 41-60: Moderate innovation with some creative elements
-- 61-80: Significant innovation with breakthrough aspects
-- 81-100: Revolutionary innovation redefining possibilities
-
-#### 2. PRACTICALITY (Strategic Alignment)
+1. PRACTICALITY (Strategic Alignment) - 50% weight
 Evaluate alignment with project goals:
-- **Problem-Solution Fit**: How directly does this address project objectives?
-- **Integration Readiness**: How well does this fit with existing context?
-- **Resource Alignment**: Does this match available capabilities?
-- **Timeline Fit**: Does this align with project phases and milestones?
 
-*Scoring Guide:*
-- 0-20: Misaligned with project goals or counterproductive
-- 21-40: Tangentially related with poor strategic fit
-- 41-60: Moderate alignment with some gaps
-- 61-80: Strong alignment with minor adjustments needed
-- 81-100: Perfect strategic fit addressing core objectives
+Problem-Solution Fit: How directly does this address project objectives?
+Integration Readiness: How well does this fit with existing context?
+Resource Alignment: Does this match available capabilities?
+Timeline Fit: Does this align with project phases and milestones?
+Scoring Guide:
 
-#### 3. SCALE OF IMPACT (Transformative Potential)
+0-20: Misaligned with project goals or counterproductive
+21-40: Tangentially related with poor strategic fit
+41-60: Moderate alignment with some gaps
+61-80: Strong alignment with minor adjustments needed
+81-100: Perfect strategic fit addressing core objectives
+2. SCALE OF IMPACT (Transformative Potential) - 30% weight
 Measure the innovation impact magnitude:
-- **Transformation Scope**: How fundamentally does this change outcomes?
-- **Stakeholder Reach**: How broadly will benefits extend?
-- **Sustainability**: Will impacts persist and grow over time?
-- **Catalytic Effect**: Does this enable further innovations?
 
-*Scoring Guide:*
-- 0-20: Negligible impact with no meaningful change
-- 21-40: Minor improvements affecting few areas
-- 41-60: Moderate impact with noticeable improvements
-- 61-80: Major impact transforming key aspects
-- 81-100: Game-changing impact revolutionizing entire domain
+Transformation Scope: How fundamentally does this change outcomes?
+Stakeholder Reach: How broadly will benefits extend?
+Sustainability: Will impacts persist and grow over time?
+Catalytic Effect: Does this enable further innovations?
+Scoring Guide:
+
+0-20: Negligible impact with no meaningful change
+21-40: Minor improvements affecting few areas
+41-60: Moderate impact with noticeable improvements
+61-80: Major impact transforming key aspects
+81-100: Game-changing impact revolutionizing entire domain
+3. INNOVATION (Novelty and Creativity) - 20% weight
+Assess the innovation breakthrough potential:
+
+Conceptual Novelty: How original is this compared to existing solutions?
+Creative Problem-Solving: Does it approach challenges in unprecedented ways?
+Paradigm Shift Potential: Could this fundamentally change how things are done?
+Knowledge Advancement: Does it push boundaries of current understanding?
+Scoring Guide:
+
+0-20: Copies existing solutions with no innovation
+21-40: Minor variations on established approaches
+41-60: Moderate innovation with some creative elements
+61-80: Significant innovation with breakthrough aspects
+81-100: Revolutionary innovation redefining possibilities
 
 ## Comparative Evaluation Process
 
@@ -1362,7 +1414,7 @@ For each dimension:
 - Use full range to show relative innovation value
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear innovation differentiation.
 
 ## Output Format
@@ -1554,49 +1606,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative regulatory merit.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Regulatory Perspective)
-Assess the regulatory innovation potential:
-- **Compliance Model Innovation**: Does this pioneer new compliance approaches?
-- **Regulatory Advantage Creation**: Does it turn compliance into competitive advantage?
-- **Governance Innovation**: Does it advance regulatory best practices?
-- **Regulatory Efficiency**: Does it streamline compliance processes?
-
-*Scoring Guide:*
-- 0-20: Creates new regulatory violations or compliance gaps
-- 21-40: Standard compliance with no regulatory innovation
-- 41-60: Moderate innovation in compliance approach
-- 61-80: Significant advancement in regulatory management
-- 81-100: Revolutionary compliance model setting new standards
-
-#### 2. PRACTICALITY (Compliance Feasibility)
+1. PRACTICALITY (Compliance Feasibility) - 50% weight
 Evaluate regulatory implementation feasibility:
-- **Regulatory Clarity**: Are requirements clear and documented?
-- **Approval Timeline**: How quickly can regulatory approvals be obtained?
-- **Compliance Complexity**: How manageable are compliance requirements?
-- **Enforcement Risk**: How likely is regulatory scrutiny?
 
-*Scoring Guide:*
-- 0-20: Prohibited or facing insurmountable regulatory barriers
-- 21-40: Major regulatory obstacles requiring exemptions
-- 41-60: Moderate compliance complexity with clear pathways
-- 61-80: Straightforward compliance with established precedents
-- 81-100: Pre-approved or explicitly encouraged by regulators
+Regulatory Clarity: Are requirements clear and documented?
+Approval Timeline: How quickly can regulatory approvals be obtained?
+Compliance Complexity: How manageable are compliance requirements?
+Enforcement Risk: How likely is regulatory scrutiny?
 
-#### 3. SCALE OF IMPACT (Regulatory Leverage)
+Scoring Guide:
+
+0-20: Prohibited or facing insurmountable regulatory barriers
+21-40: Major regulatory obstacles requiring exemptions
+41-60: Moderate compliance complexity with clear pathways
+61-80: Straightforward compliance with established precedents
+81-100: Pre-approved or explicitly encouraged by regulators
+
+2. SCALE OF IMPACT (Regulatory Leverage) - 30% weight
 Measure the regulatory impact potential:
-- **Jurisdictional Reach**: How many jurisdictions can this operate in?
-- **Regulatory Scalability**: Can compliance scale efficiently?
-- **Future Regulatory Alignment**: Does this align with regulatory trends?
-- **Compliance Network Effects**: Does this simplify broader compliance?
 
-*Scoring Guide:*
-- 0-20: Limited to single jurisdiction with high restrictions
-- 21-40: Few jurisdictions with significant limitations
-- 41-60: Multiple jurisdictions with manageable variations
-- 61-80: Most major markets with harmonized compliance
-- 81-100: Global regulatory alignment with universal applicability
+Jurisdictional Reach: How many jurisdictions can this operate in?
+Regulatory Scalability: Can compliance scale efficiently?
+Future Regulatory Alignment: Does this align with regulatory trends?
+Compliance Network Effects: Does this simplify broader compliance?
+
+Scoring Guide:
+
+0-20: Limited to single jurisdiction with high restrictions
+21-40: Few jurisdictions with significant limitations
+41-60: Multiple jurisdictions with manageable variations
+61-80: Most major markets with harmonized compliance
+81-100: Global regulatory alignment with universal applicability
+
+3. INNOVATION (Regulatory Perspective) - 20% weight
+Assess the regulatory innovation potential:
+
+Compliance Model Innovation: Does this pioneer new compliance approaches?
+Regulatory Advantage Creation: Does it turn compliance into competitive advantage?
+Governance Innovation: Does it advance regulatory best practices?
+Regulatory Efficiency: Does it streamline compliance processes?
+
+Scoring Guide:
+
+0-20: Creates new regulatory violations or compliance gaps
+21-40: Standard compliance with no regulatory innovation
+41-60: Moderate innovation in compliance approach
+61-80: Significant advancement in regulatory management
+81-100: Revolutionary compliance model setting new standards
 
 ## Comparative Evaluation Process
 
@@ -1619,7 +1677,7 @@ For each dimension:
 - Use full range to show relative regulatory position
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear regulatory differentiation.
 
 ## Output Format
@@ -1811,49 +1869,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative sustainability merit.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Sustainability Perspective)
-Assess the sustainability innovation potential:
-- **Environmental Solution Innovation**: Does this pioneer new sustainability approaches?
-- **Circular Economy Innovation**: Does it advance resource circularity?
-- **Climate Innovation**: Does it introduce novel decarbonization methods?
-- **Regenerative Innovation**: Does it restore rather than just reduce harm?
-
-*Scoring Guide:*
-- 0-20: Reinforces unsustainable practices
-- 21-40: Standard approach with no sustainability innovation
-- 41-60: Moderate innovation in environmental solutions
-- 61-80: Significant advancement in sustainability practices
-- 81-100: Revolutionary approach transforming sustainability paradigms
-
-#### 2. PRACTICALITY (Implementation Feasibility)
+1. PRACTICALITY (Implementation Feasibility) - 50% weight
 Evaluate sustainable implementation feasibility:
-- **Resource Availability**: Are sustainable materials/energy accessible?
-- **Technology Readiness**: Is green technology mature enough?
-- **Behavior Change Required**: How much shift in practices needed?
-- **Cost-Effectiveness**: Is sustainability economically viable?
 
-*Scoring Guide:*
-- 0-20: Unsustainable to implement with current resources
-- 21-40: Major barriers to sustainable implementation
-- 41-60: Moderate challenges with clear sustainability pathways
-- 61-80: Readily implementable with existing green solutions
-- 81-100: Immediately deployable with net positive impact
+Resource Availability: Are sustainable materials/energy accessible?
+Technology Readiness: Is green technology mature enough?
+Behavior Change Required: How much shift in practices needed?
+Cost-Effectiveness: Is sustainability economically viable?
 
-#### 3. SCALE OF IMPACT (Environmental Magnitude)
+Scoring Guide:
+
+0-20: Unsustainable to implement with current resources
+21-40: Major barriers to sustainable implementation
+41-60: Moderate challenges with clear sustainability pathways
+61-80: Readily implementable with existing green solutions
+81-100: Immediately deployable with net positive impact
+
+2. SCALE OF IMPACT (Environmental Magnitude) - 30% weight
 Measure the sustainability impact scale:
-- **Emission Reduction Potential**: GHG reduction magnitude
-- **Resource Conservation**: Water, materials, energy savings
-- **Ecosystem Benefits**: Biodiversity and habitat protection
-- **Systemic Change**: Catalyzing broader sustainability shifts
 
-*Scoring Guide:*
-- 0-20: Negative environmental impact at scale
-- 21-40: Minimal positive impact with limited reach
-- 41-60: Moderate environmental benefits
-- 61-80: Significant positive impact across multiple dimensions
-- 81-100: Transformative planetary-scale benefits
+Emission Reduction Potential: GHG reduction magnitude
+Resource Conservation: Water, materials, energy savings
+Ecosystem Benefits: Biodiversity and habitat protection
+Systemic Change: Catalyzing broader sustainability shifts
+
+Scoring Guide:
+
+0-20: Negative environmental impact at scale
+21-40: Minimal positive impact with limited reach
+41-60: Moderate environmental benefits
+61-80: Significant positive impact across multiple dimensions
+81-100: Transformative planetary-scale benefits
+
+3. INNOVATION (Sustainability Perspective) - 20% weight
+Assess the sustainability innovation potential:
+
+Environmental Solution Innovation: Does this pioneer new sustainability approaches?
+Circular Economy Innovation: Does it advance resource circularity?
+Climate Innovation: Does it introduce novel decarbonization methods?
+Regenerative Innovation: Does it restore rather than just reduce harm?
+
+Scoring Guide:
+
+0-20: Reinforces unsustainable practices
+21-40: Standard approach with no sustainability innovation
+41-60: Moderate innovation in environmental solutions
+61-80: Significant advancement in sustainability practices
+81-100: Revolutionary approach transforming sustainability paradigms
 
 ## Comparative Evaluation Process
 
@@ -1876,7 +1940,7 @@ For each dimension:
 - Use full range to show relative sustainability position
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear sustainability differentiation.
 
 ## Output Format
@@ -2068,49 +2132,55 @@ Each idea in the list follows this structure:
 ### Primary Objective
 Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative technical merit.
 
-### Comparative Scoring Framework (Equal Weight: 33.33% each)
+### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
-#### 1. INNOVATION (Technical Perspective)
-Assess the technical innovation potential:
-- **Architecture Innovation**: Does this introduce novel design patterns?
-- **Technology Advancement**: Does it leverage cutting-edge technologies effectively?
-- **Technical Problem-Solving**: Does it solve technical challenges in new ways?
-- **Engineering Excellence**: Does it set new standards for quality?
-
-*Scoring Guide:*
-- 0-20: Uses obsolete or flawed technical approaches
-- 21-40: Standard technology with no innovation
-- 41-60: Moderate technical innovation with some novel aspects
-- 61-80: Significant technical advancement with modern approaches
-- 81-100: Revolutionary technical breakthrough setting new paradigms
-
-#### 2. PRACTICALITY (Technical Feasibility)
+1. PRACTICALITY (Technical Feasibility) - 50% weight
 Evaluate technical implementation feasibility:
-- **Technology Maturity**: Are required technologies production-ready?
-- **Skills Availability**: Is technical expertise readily accessible?
-- **Infrastructure Readiness**: Can current systems support this?
-- **Technical Risk Level**: Are technical risks manageable?
 
-*Scoring Guide:*
-- 0-20: Technically infeasible with current technology
-- 21-40: Very difficult requiring bleeding-edge or unproven tech
-- 41-60: Moderate complexity with some technical challenges
-- 61-80: Straightforward with mature technologies
-- 81-100: Immediately implementable with proven tech stack
+Technology Maturity: Are required technologies production-ready?
+Skills Availability: Is technical expertise readily accessible?
+Infrastructure Readiness: Can current systems support this?
+Technical Risk Level: Are technical risks manageable?
 
-#### 3. SCALE OF IMPACT (Technical Leverage)
+Scoring Guide:
+
+0-20: Technically infeasible with current technology
+21-40: Very difficult requiring bleeding-edge or unproven tech
+41-60: Moderate complexity with some technical challenges
+61-80: Straightforward with mature technologies
+81-100: Immediately implementable with proven tech stack
+
+2. SCALE OF IMPACT (Technical Leverage) - 30% weight
 Measure the technical impact magnitude:
-- **Performance Gains**: Speed, efficiency, and resource optimization
-- **Scalability Potential**: Ability to handle growth and load
-- **Technical Enablement**: Does this unlock other technical capabilities?
-- **Future-Proofing**: Long-term technical sustainability
 
-*Scoring Guide:*
-- 0-20: Creates technical debt with limited benefits
-- 21-40: Minor technical improvements with local impact
-- 41-60: Moderate technical gains with decent scalability
-- 61-80: Significant technical advantages with high scalability
-- 81-100: Transformative technical platform enabling everything
+Performance Gains: Speed, efficiency, and resource optimization
+Scalability Potential: Ability to handle growth and load
+Technical Enablement: Does this unlock other technical capabilities?
+Future-Proofing: Long-term technical sustainability
+
+Scoring Guide:
+
+0-20: Creates technical debt with limited benefits
+21-40: Minor technical improvements with local impact
+41-60: Moderate technical gains with decent scalability
+61-80: Significant technical advantages with high scalability
+81-100: Transformative technical platform enabling everything
+
+3. INNOVATION (Technical Perspective) - 20% weight
+Assess the technical innovation potential:
+
+Architecture Innovation: Does this introduce novel design patterns?
+Technology Advancement: Does it leverage cutting-edge technologies effectively?
+Technical Problem-Solving: Does it solve technical challenges in new ways?
+Engineering Excellence: Does it set new standards for quality?
+
+Scoring Guide:
+
+0-20: Uses obsolete or flawed technical approaches
+21-40: Standard technology with no innovation
+41-60: Moderate technical innovation with some novel aspects
+61-80: Significant technical advancement with modern approaches
+81-100: Revolutionary technical breakthrough setting new paradigms
 
 ## Comparative Evaluation Process
 
@@ -2133,7 +2203,7 @@ For each dimension:
 - Use full range to show relative technical merit
 
 ### Step 4: Final Scoring
-Calculate each idea's score: **(Innovation + Practicality + Scale) ÷ 3**
+Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
 Round to the nearest integer. Ensure scores reflect clear technical differentiation.
 
 ## Output Format
