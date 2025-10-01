@@ -96,7 +96,7 @@ class ProjectIdeas(BaseModel):
 #############################
 class Rating(BaseModel):
     ideaId: int
-    rating: int
+    rating: float
     comment: str
 
 class RatingsList(BaseModel):
