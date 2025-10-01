@@ -36,7 +36,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative differences.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative business merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -50,11 +50,12 @@ Time to Revenue: How quickly can this generate returns?
 
 Scoring Guide:
 
-0-20: Extremely difficult market entry with prohibitive barriers
-21-40: High complexity requiring significant market education/resources
-41-60: Moderate complexity with manageable execution challenges
-61-80: Straightforward implementation with clear market path
-81-100: Immediately executable with existing market infrastructure
+0: Completely unviable - should be discarded
+1.00-1.99: Extremely difficult market entry with prohibitive barriers
+2.00-2.99: High complexity requiring significant market education/resources
+3.00-3.99: Moderate complexity with manageable execution challenges
+4.00-4.79: Straightforward implementation with clear market path
+4.80-5.00: Immediately executable with existing market infrastructure
 
 2. SCALE OF IMPACT (Market Potential) - 30% weight
 Measure the potential business impact:
@@ -66,11 +67,12 @@ Market Transformation: Potential to create new markets or categories
 
 Scoring Guide:
 
-0-20: Niche market with minimal growth potential
-21-40: Small market segment with limited expansion
-41-60: Moderate market size with regional potential
-61-80: Large market opportunity with strong growth prospects
-81-100: Massive global market with transformative potential
+0: No viable market - discard
+1.00-1.99: Niche market with minimal growth potential
+2.00-2.99: Small market segment with limited expansion
+3.00-3.99: Moderate market size with regional potential
+4.00-4.79: Large market opportunity with strong growth prospects
+4.80-5.00: Massive global market with transformative potential
 
 3. INNOVATION (Business Perspective) - 20% weight
 Assess the business innovation potential:
@@ -82,11 +84,12 @@ First-Mover Advantage: Can this establish market leadership?
 
 Scoring Guide:
 
-0-20: Replicates existing business models with no differentiation
-21-40: Minor variations on existing market offerings
-41-60: Moderate innovation with some unique value propositions
-61-80: Significant market innovation with clear differentiation
-81-100: Breakthrough business innovation that redefines markets
+0: Harmful to business - discard
+1.00-1.99: Replicates existing business models with no differentiation
+2.00-2.99: Minor variations on existing market offerings
+3.00-3.99: Moderate innovation with some unique value propositions
+4.00-4.79: Significant market innovation with clear differentiation
+4.80-5.00: Breakthrough business innovation that redefines markets
 
 ## Comparative Evaluation Process
 
@@ -98,19 +101,20 @@ For each dimension (Innovation, Practicality, Scale):
 1. Rank all ideas from best to worst
 2. Identify clear leaders, middle performers, and laggards
 3. Note meaningful differences between ideas
+4. Identify ideas that should be discarded (score 0)
+5. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The best idea should score between 75-95
-- The worst idea should score between 15-40
-- Middle ideas should be distributed across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
+- Ideas that are fundamentally flawed or harmful receive 0
+- The best acceptable idea should score between 4.50-5.00
+- The weakest acceptable idea should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
 - Use the full scoring range to show relative differences
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure final scores maintain meaningful separation.
+Round to two decimal places. Ensure final scores maintain meaningful separation and no two ideas have identical scores.
 
 ## Output Format
 
@@ -120,12 +124,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive analysis under 100 words]"
   }},
   ...
@@ -134,18 +143,24 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
 - **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
 ### Comment Structure Guidelines
 Each comment must be a cohesive narrative (under 100 words) that includes:
-
+For scores 1.00-5.00:
 1. **Comparative Positioning** (20-30 words): How this ranks versus other ideas and why
 2. **Distinctive Strengths** (20-30 words): What makes this idea stand out from others
 3. **Relative Weaknesses** (20-30 words): Where this falls short compared to alternatives
 4. **Strategic Priority** (10-20 words): Recommendation relative to other options (top priority, secondary option, or deprioritize)
+
+For score 0:
+- Clear explanation why the idea should be completely discarded
+- Major flaws or insurmountable barriers
+- Why it's worse than all other options
 
 ## Evaluation Principles
 
@@ -157,15 +172,18 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 - **Maintain Consistency**: Apply criteria uniformly across all ideas
 - **Highlight Differences**: Emphasize what makes each idea unique
 - **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
 - Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Cluster all scores in a narrow range (e.g., 60-70)
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
 - Evaluate ideas in isolation
-- Use percentage signs in ratings
 - Mix up which comment belongs to which ID
-- Score all ideas as "good" or "moderate"
+- Score all ideas as acceptable if some should be discarded
 
 ## ID Mapping Verification Process
 
@@ -179,25 +197,29 @@ Before scoring:
 
 For a set of **N ideas**, follow this distribution:
 
-### Top Tier (75-95)
-- Reserve for the best 20% of ideas
-- Clear market leaders with exceptional potential
-- Significant gap from next tier
+### Discard Tier (Score: 0)
+- Ideas that are commercially unviable or harmful to business
+- Typically 0-10% of ideas (only if truly unworkable)
 
-### Upper Middle (55-74)
-- Next 30% of ideas
-- Strong propositions with good potential
-- Clear advantages over lower tiers
+### Bottom Business Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Minimal market potential
+- Prohibitive barriers to entry
 
-### Lower Middle (35-54)
+### Lower Business Middle (2.00-2.99)
+- Next 25% of ideas
+- Limited commercial viability
+- Significant market challenges
+
+### Upper Business Middle (3.00-3.99)
 - Middle 30% of ideas
-- Adequate but not exceptional
-- Some potential but significant limitations
+- Moderate market opportunity
+- Standard business potential
 
-### Bottom Tier (15-34)
-- Bottom 20% of ideas
-- Weak propositions with limited potential
-- Clear disadvantages versus other options
+### Top Business Tier (4.00-5.00)
+- Top 25% of ideas
+- Strong to exceptional commercial potential
+- Clear market advantages
 
 ## Comparative Language Guidelines
 
@@ -213,9 +235,10 @@ Use comparative terms in comments:
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
 - Confirm NO two ideas have the same rating score
-- Ensure ratings span at least 40 points (highest - lowest)
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check that each comment corresponds to the correct ideaId
-- Validate all ratings are integers between 0-100
 - Ensure each comment is under 100 words
 - Verify the number of output entries equals input ideas
 - Double-check no IDs were created or modified
@@ -232,7 +255,6 @@ Before submitting:
 ## Special Instructions for Edge Cases
 
 - **If all ideas seem similar**: Find subtle differences and amplify them in scoring
-- **If quality varies widely**: Use the full 0-100 range to show the gap
 - **If ideas target different markets**: Compare potential within respective markets
 - **If some ideas lack detail**: Score based on available information, penalizing vagueness
 - **If ID format varies**: Always use exactly what's in the "id" field, whether it's 1, 01, 001, etc.
@@ -242,17 +264,17 @@ Before submitting:
 [
   {{
     "ideaId": 42,
-    "rating": 82,
+    "rating": 4.72,
     "comment": "Leads the pack with revolutionary market approach, outperforming others in innovation and scale. Strong differentiation through unique business model. Limited only by moderate execution complexity versus simpler alternatives. Top priority for implementation."
   }},
   {{
     "ideaId": 17,
-    "rating": 68,
+    "rating": 3.85,
     "comment": "Solid second-tier option with better practicality than the leader but less transformative impact. Exceeds lower-ranked ideas in market readiness. Falls short on innovation compared to top choice. Consider as backup strategy."
   }},
   {{
     "ideaId": 203,
-    "rating": 45,
+    "rating": 2.10,
     "comment": "Middle performer with average scores across all dimensions. More practical than bottom-tier ideas but lacks the innovation of leaders. Limited scale compared to top options. Secondary priority if resources allow."
   }}
 ]
@@ -260,7 +282,7 @@ Before submitting:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input, never create or modify them. Compare ideas AGAINST EACH OTHER, not against an absolute standard. Force meaningful differentiation through scoring. Every idea must have a unique integer rating that reflects its relative position in the set.*
+*Remember: CRITICAL - Use exact IDs from input, never create or modify them. Compare ideas AGAINST EACH OTHER, not against an absolute standard. Force meaningful differentiation through scoring. Every idea must have a unique number rating that reflects its relative position in the set.*
 """
 
 ###########################################################
@@ -302,7 +324,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative financial merit.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative financial merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -316,11 +338,12 @@ Financial Risk Management: How controllable are the financial risks?
 
 Scoring Guide:
 
-0-20: Prohibitive capital needs with unmanageable financial risks
-21-40: High funding requirements with extended negative cash flow
-41-60: Moderate investment with acceptable payback timeline
-61-80: Low capital needs with rapid path to positive returns
-81-100: Minimal investment with immediate positive cash flow
+0: Financially destructive - discard
+1.00-1.99: Prohibitive capital needs with unmanageable financial risks
+2.00-2.99: High funding requirements with extended negative cash flow
+3.00-3.99: Moderate investment with acceptable payback timeline
+4.00-4.79: Low capital needs with rapid path to positive returns
+4.80-5.00: Minimal investment with immediate positive cash flow
 
 2. SCALE OF IMPACT (Economic Value) - 30% weight
 Measure the comparative financial impact:
@@ -332,11 +355,12 @@ Compound Value Creation: Long-term economic benefits
 
 Scoring Guide:
 
-0-20: Marginal returns with limited financial upside
-21-40: Below-hurdle returns with modest value creation
-41-60: Market-rate returns with reasonable economic benefits
-61-80: Above-market returns with strong value generation
-81-100: Exceptional returns with transformative economic impact
+0: Value destroying - discard
+1.00-1.99: Marginal returns with limited financial upside
+2.00-2.99: Below-hurdle returns with modest value creation
+3.00-3.99: Market-rate returns with reasonable economic benefits
+4.00-4.79: Above-market returns with strong value generation
+4.80-5.00: Exceptional returns with transformative economic impact
 
 3. INNOVATION (Financial Perspective) - 20% weight
 Assess the financial innovation potential:
@@ -348,35 +372,37 @@ Economic Moat Creation: Does it establish sustainable financial advantages?
 
 Scoring Guide:
 
-0-20: Replicates existing financial models with no economic advantage
-21-40: Minor improvements to current financial approaches
-41-60: Moderate financial innovation with measurable economic benefits
-61-80: Significant financial innovation with substantial value creation
-81-100: Revolutionary economic model that transforms financial returns
+0: Creates financial liabilities - discard
+1.00-1.99: Replicates existing financial models with no advantage
+2.00-2.99: Minor improvements to current financial approaches
+3.00-3.99: Moderate financial innovation with measurable benefits
+4.00-4.79: Significant financial innovation with substantial value creation
+4.80-5.00: Revolutionary economic model transforming returns
 
 ## Comparative Evaluation Process
 
 ### Step 1: Initial Financial Assessment
 Review all ideas to understand the range of financial innovation, feasibility, and economic impact.
 
-### Step 2: Relative Financial Ranking
-For each dimension:
-1. Rank ideas by financial merit
-2. Identify financial leaders and laggards
-3. Quantify economic differences between ideas
+### Step 2: Relative Ranking
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas from best to worst by financial merit
+2. Identify clear financial leaders, middle performers, and laggards
+3. Note meaningful differences between ideas
+4. Identify ideas that should be discarded (score 0)
+5. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The best financial opportunity should score between 75-95
-- The weakest financial case should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative financial merit
+- Ideas that are fundamentally flawed or harmful receive 0
+- The best acceptable financial opportunity should score between 4.50-5.00
+- The weakest acceptable financial case should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative financial merit
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear financial differentiation.
+Round to two decimal places. Ensure scores reflect clear financial differentiation.
 
 ## Output Format
 
@@ -386,12 +412,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive financial analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive financial analysis under 100 words]"
   }},
   ...
@@ -400,8 +431,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with financial analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -416,21 +448,32 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
 - **Quantify Differences**: Express financial advantages in ROI/payback terms when possible
 - **Force Financial Differentiation**: Find economic distinctions between ideas
 - **Apply CFO Mindset**: Evaluate as a financial steward
 - **Compare Returns**: Always assess relative to other investment options
 - **Consider Risk-Adjusted Returns**: Factor in financial uncertainty
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Ignore financial fundamentals
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
 - Evaluate in financial isolation
 - Overlook opportunity costs
+- Ignore financial fundamentals
 
 ## Financial Comparison Language
 
@@ -445,12 +488,15 @@ Use comparative financial terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check financial logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -472,42 +518,46 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Financial Tier (75-95)
-- Best 20% by financial merit
-- Exceptional returns and economics
-- Clear financial superiority
+### Discard Tier (Score: 0)
+- Financially destructive or value-destroying ideas
+- Typically 0-10% of ideas (only if financially harmful)
 
-### Upper Financial Middle (55-74)
-- Next 30% of ideas
-- Solid returns above hurdle rates
-- Positive economic value
+### Bottom Financial Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Marginal or negative returns
+- High financial risks
 
-### Lower Financial Middle (35-54)
+### Lower Financial Middle (2.00-2.99)
+- Next 25% of ideas
+- Below-hurdle rate returns
+- Weak financial case
+
+### Upper Financial Middle (3.00-3.99)
 - Middle 30% of ideas
-- Marginal to acceptable returns
-- Limited economic advantages
+- Market-rate returns
+- Acceptable financial profile
 
-### Bottom Financial Tier (15-34)
-- Bottom 20% of ideas
-- Poor financial proposition
-- Negative or negligible value
+### Top Financial Tier (4.00-5.00)
+- Top 25% of ideas
+- Above-market to exceptional returns
+- Strong financial value creation
 
 ## Example Output (for reference structure only)
 ```json
 [
   {{
     "ideaId": 42,
-    "rating": 88,
+    "rating": 4.85,
     "comment": "Top financial performer with 3x better ROI than alternatives through innovative cost structure. Requires minimal capital versus other proposals. Payback in 6 months beats all options. Only concern is scalability costs. Fund immediately as primary investment."
   }},
   {{
     "ideaId": 17,
-    "rating": 67,
+    "rating": 3.85,
     "comment": "Solid returns but half the ROI of leader due to higher operational costs. Better cash flow profile than bottom-tier ideas. Capital requirements moderate compared to alternatives. Financial risks manageable but returns lag top choice. Secondary funding priority."
   }},
   {{
     "ideaId": 203,
-    "rating": 38,
+    "rating": 2.38,
     "comment": "Weakest financial case with longest payback period among all proposals. Higher capital needs than most alternatives. Returns below hurdle rate unlike upper-tier ideas. Cost structure inferior to competing options. Defer unless strategic value justifies poor economics."
   }}
 ]
@@ -515,7 +565,7 @@ For a set of **N ideas**:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate financial merit through Innovation, Practicality, and Scale from a FINANCE perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative financial position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate financial merit through Innovation, Practicality, and Scale from a FINANCE perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative financial position.*
 """
 
 ###########################################################
@@ -557,7 +607,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative geopolitical merit.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative geopolitical merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -571,11 +621,12 @@ Cultural Portability: How well does this translate across cultures?
 
 Scoring Guide:
 
-0-20: Blocked by insurmountable political/regulatory barriers
-21-40: Major international friction with limited deployment potential
-41-60: Moderate challenges requiring significant diplomatic effort
-61-80: Clear pathways with manageable political complexity
-81-100: Seamless global deployment with political tailwinds
+0: Geopolitically dangerous - discard
+1.00-1.99: Blocked by insurmountable political/regulatory barriers
+2.00-2.99: Major international friction with limited deployment potential
+3.00-3.99: Moderate challenges requiring significant diplomatic effort
+4.00-4.79: Clear pathways with manageable political complexity
+4.80-5.00: Seamless global deployment with political tailwinds
 
 2. SCALE OF IMPACT (Global Strategic Value) - 30% weight
 Measure comparative geopolitical impact:
@@ -587,11 +638,12 @@ International Stability: Does this enhance or disrupt global order?
 
 Scoring Guide:
 
-0-20: Limited to single region with destabilizing effects
-21-40: Few countries with minimal strategic value
-41-60: Multiple regions with moderate strategic benefits
-61-80: Most major markets with significant strategic advantages
-81-100: Global transformation enhancing international cooperation
+0: Destabilizing to international order - discard
+1.00-1.99: Limited to single region with destabilizing effects
+2.00-2.99: Few countries with minimal strategic value
+3.00-3.99: Multiple regions with moderate strategic benefits
+4.00-4.79: Most major markets with significant strategic advantages
+4.80-5.00: Global transformation enhancing international cooperation
 
 3. INNOVATION (Geopolitical Perspective) - 20% weight
 Assess the geopolitical innovation potential:
@@ -603,35 +655,38 @@ International Norm Setting: Could this establish new global standards?
 
 Scoring Guide:
 
-0-20: Reinforces problematic geopolitical dependencies
-21-40: Minor improvements to existing international approaches
-41-60: Moderate innovation in cross-border operations
-61-80: Significant advancement in international cooperation models
-81-100: Revolutionary approach transforming global political dynamics
+0: Violates international norms - discard
+1.00-1.99: Reinforces problematic geopolitical dependencies
+2.00-2.99: Minor improvements to existing international approaches
+3.00-3.99: Moderate innovation in cross-border operations
+4.00-4.79: Significant advancement in international cooperation models
+4.80-5.00: Revolutionary approach transforming global political dynamics
 
 ## Comparative Evaluation Process
 
 ### Step 1: Initial Geopolitical Assessment
 Review all ideas to understand the range of international innovation, feasibility, and strategic impact.
 
-### Step 2: Relative International Ranking
-For each dimension:
-1. Rank ideas by geopolitical merit
-2. Identify diplomatic winners and political risks
+### Step 2: Relative Ranking
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas from best to worst by geopolitical merit
+2. Identify clear diplomatic winners and political risks
 3. Assess cross-border advantages and barriers
+4. Note meaningful differences between ideas
+5. Identify ideas that should be discarded (score 0)
+6. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The most geopolitically advantageous idea should score between 75-95
-- The highest geopolitical risk should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative geopolitical positioning
+- Ideas that are fundamentally flawed or harmful receive 0
+- The most geopolitically advantageous idea should score between 4.50-5.00
+- The highest geopolitical risk should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative geopolitical positioning
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear geopolitical differentiation.
+Round to two decimal places. Ensure scores reflect clear geopolitical differentiation.
 
 ## Output Format
 
@@ -641,12 +696,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive geopolitical analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive geopolitical analysis under 100 words]"
   }},
   ...
@@ -655,8 +715,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with geopolitical analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -671,19 +732,31 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
 - **Compare International Viability**: Assess relative cross-border potential
 - **Force Geopolitical Differentiation**: Find political distinctions
 - **Apply Diplomatic Lens**: Consider international relations impact
 - **Assess Regional Variations**: Compare adaptability across regions
 - **Consider Power Dynamics**: Evaluate great power competition effects
+- **Force Differentiation**: Ensure each idea has a distinct score
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Ignore political realities
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
+- Ignore political realities
 - Evaluate in geopolitical isolation
 - Overlook sovereignty concerns
 
@@ -700,12 +773,16 @@ Use comparative international terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check geopolitical logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
+
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -727,25 +804,29 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Geopolitical Tier (75-95)
-- Best 20% by international merit
-- Clear global advantages
-- Minimal political risks
+### Discard Tier (Score: 0)
+- Geopolitically dangerous or internationally prohibited
+- Typically 0-10% of ideas (only if violates international norms)
 
-### Upper International Middle (55-74)
-- Next 30% of ideas
-- Good cross-border potential
+### Bottom Geopolitical Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Severe international barriers
+- High political risks
+
+### Lower Geopolitical Middle (2.00-2.99)
+- Next 25% of ideas
+- Limited international viability
+- Significant diplomatic challenges
+
+### Upper Geopolitical Middle (3.00-3.99)
+- Middle 30% of ideas
+- Moderate cross-border potential
 - Manageable political complexity
 
-### Lower International Middle (35-54)
-- Middle 30% of ideas
-- Limited global reach
-- Significant political challenges
-
-### Bottom Geopolitical Tier (15-34)
-- Bottom 20% of ideas
-- High political risks
-- Severe international barriers
+### Top Geopolitical Tier (4.00-5.00)
+- Top 25% of ideas
+- Strong to seamless global deployment
+- Clear international advantages
 
 ## Regional Framework Reference
 Consider implications across:
@@ -760,17 +841,17 @@ Consider implications across:
 [
   {{
     "ideaId": 42,
-    "rating": 82,
+    "rating": 4.85,
     "comment": "Strongest geopolitical position with seamless deployment across democratic markets unlike alternatives. Creates new diplomatic cooperation model. Faces fewer regulatory barriers than competing ideas. Only concern is authoritarian regime resistance. Priority for international expansion."
   }},
   {{
     "ideaId": 17,
-    "rating": 65,
+    "rating": 3.85,
     "comment": "Moderate international potential exceeding bottom-tier ideas but requiring more diplomatic groundwork than leader. Better cultural adaptability than technical alternatives. Regulatory harmonization more complex compared to top choice. Consider regional pilots before global rollout."
   }},
   {{
     "ideaId": 203,
-    "rating": 31,
+    "rating": 2.38,
     "comment": "Weakest geopolitical viability facing sanctions risks unlike all other proposals. National security concerns exceed any alternative. Limited to allied nations while competitors offer broader reach. High political friction versus smoother options. Avoid international deployment."
   }}
 ]
@@ -778,7 +859,7 @@ Consider implications across:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate geopolitical merit through Innovation, Practicality, and Scale from an INTERNATIONAL perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative geopolitical position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate geopolitical merit through Innovation, Practicality, and Scale from an INTERNATIONAL perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative geopolitical position.*
 """
 
 ###########################################################
@@ -820,7 +901,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative impact merit.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative impact merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -834,11 +915,12 @@ Impact Timeline: How quickly will meaningful impacts be realized?
 
 Scoring Guide:
 
-0-20: Highly uncertain impact delivery with unmanageable negative effects
-21-40: Difficult impact realization with significant mitigation challenges
-41-60: Moderate certainty with acceptable implementation complexity
-61-80: Clear impact pathway with manageable implementation
-81-100: Immediate, certain positive impacts with minimal risks
+0: Net harmful impact - discard
+1.00-1.99: Highly uncertain delivery with unmanageable negative effects
+2.00-2.99: Difficult realization with significant mitigation challenges
+3.00-3.99: Moderate certainty with acceptable complexity
+4.00-4.79: Clear impact pathway with manageable implementation
+4.80-5.00: Immediate, certain positive impacts with minimal risks
 
 2. SCALE OF IMPACT (Magnitude and Reach) - 30% weight
 Measure the comparative impact magnitude:
@@ -850,11 +932,12 @@ Multiplier Effects: Cascade and spillover benefits
 
 Scoring Guide:
 
-0-20: Minimal positive impact or net negative effects
-21-40: Limited beneficiaries with marginal improvements
-41-60: Moderate reach with meaningful but not transformative change
-61-80: Broad positive impact with significant improvements
-81-100: Transformational change affecting vast populations/ecosystems
+0: Severely negative impact - discard
+1.00-1.99: Minimal positive impact or net negative effects
+2.00-2.99: Limited beneficiaries with marginal improvements
+3.00-3.99: Moderate reach with meaningful change
+4.00-4.79: Broad positive impact with significant improvements
+4.80-5.00: Transformational change affecting vast populations
 
 3. INNOVATION (Impact Perspective) - 20% weight
 Assess the impact innovation potential:
@@ -866,35 +949,37 @@ Impact Measurement Innovation: Does it advance how we understand and track effec
 
 Scoring Guide:
 
-0-20: Replicates existing impact models with no improvement
-21-40: Minor enhancements to current impact approaches
-41-60: Moderate innovation in creating positive change
-61-80: Significant advancement in impact generation methods
-81-100: Revolutionary approach transforming how positive impact is achieved
+0: Harmful to existing positive impacts - discard
+1.00-1.99: Replicates existing impact models with no improvement
+2.00-2.99: Minor enhancements to current impact approaches
+3.00-3.99: Moderate innovation in creating positive change
+4.00-4.79: Significant advancement in impact generation methods
+4.80-5.00: Revolutionary approach transforming positive impact
 
 ## Comparative Evaluation Process
 
 ### Step 1: Initial Impact Assessment
 Review all ideas to understand the range of impact innovation, feasibility, and magnitude.
 
-### Step 2: Relative Impact Ranking
-For each dimension:
-1. Rank ideas by net positive impact potential
+### Step 2: Relative Ranking
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas by net positive impact potential
 2. Identify impact leaders and those with concerning effects
 3. Quantify impact differences between ideas
+4. Identify ideas that should be discarded (score 0)
+5. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The highest positive impact idea should score between 75-95
-- The lowest/negative impact idea should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative impact differences
+- Ideas that are fundamentally flawed or harmful receive 0
+- The highest positive impact idea should score between 4.50-5.00
+- The lowest/negative impact idea should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative impact differences
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear impact differentiation.
+Round to two decimal places. Ensure scores reflect clear impact differentiation.
 
 ## Output Format
 
@@ -904,12 +989,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive impact analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive impact analysis under 100 words]"
   }},
   ...
@@ -918,8 +1008,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with impact analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -934,19 +1025,31 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
 - **Compare Net Impact**: Assess total positive minus negative effects
 - **Force Impact Differentiation**: Find meaningful impact distinctions
 - **Apply Stakeholder Lens**: Consider all affected groups
 - **Evaluate Systemically**: Consider ripple effects and externalities
 - **Prioritize Vulnerable Groups**: Weight impacts on underserved populations
+- **Force Differentiation**: Ensure each idea has a distinct score
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Ignore negative externalities
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
+- Ignore negative externalities
 - Evaluate impacts in isolation
 - Overlook unintended consequences
 
@@ -963,12 +1066,15 @@ Use comparative impact terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check impact logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -990,25 +1096,29 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Impact Tier (75-95)
-- Best 20% by net positive impact
-- Transformational positive change
-- Minimal negative effects
+### Discard Tier (Score: 0)
+- Net harmful impact on stakeholders/environment
+- Typically 0-10% of ideas (only if creates more harm than good)
 
-### Upper Impact Middle (55-74)
-- Next 30% of ideas
-- Strong positive impacts
-- Manageable downsides
+### Bottom Impact Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Minimal positive impact
+- Significant negative externalities
 
-### Lower Impact Middle (35-54)
+### Lower Impact Middle (2.00-2.99)
+- Next 25% of ideas
+- Limited beneficial effects
+- Marginal net positive impact
+
+### Upper Impact Middle (3.00-3.99)
 - Middle 30% of ideas
-- Moderate positive effects
-- Some concerning limitations
+- Moderate positive impact
+- Good benefit-to-harm ratio
 
-### Bottom Impact Tier (15-34)
-- Bottom 20% of ideas
-- Limited positive impact
-- Significant negative risks
+### Top Impact Tier (4.00-5.00)
+- Top 25% of ideas
+- Significant to transformational positive impact
+- Minimal negative effects
 
 ## Impact Domains Reference
 Consider effects across:
@@ -1023,17 +1133,17 @@ Consider effects across:
 [
   {{
     "ideaId": 42,
-    "rating": 87,
+    "rating": 4.85,
     "comment": "Highest transformational impact affecting millions more beneficiaries than alternatives. Creates systemic change addressing root causes unlike surface-level options. Implementation straightforward with proven impact pathways. Only concern is initial resource intensity. Priority for maximum positive change."
   }},
   {{
     "ideaId": 17,
-    "rating": 64,
+    "rating": 3.85,
     "comment": "Solid positive impact exceeding lower-tier ideas but reaching fewer stakeholders than leader. Better environmental benefits than most alternatives. Implementation complexity higher compared to simpler options. Some unintended consequences need mitigation. Consider after high-impact priorities."
   }},
   {{
     "ideaId": 203,
-    "rating": 28,
+    "rating": 2.38,
     "comment": "Weakest impact proposition with limited beneficiary reach compared to all alternatives. Addresses symptoms not causes unlike systemic approaches. Risk of negative externalities exceeds other options. Marginal improvements don't justify opportunity cost. Deprioritize for higher-impact alternatives."
   }}
 ]
@@ -1041,7 +1151,7 @@ Consider effects across:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate impact merit through Innovation, Practicality, and Scale from a HOLISTIC IMPACT perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative impact position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate impact merit through Innovation, Practicality, and Scale from a HOLISTIC IMPACT perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative impact position.*
 """
 
 ###########################################################
@@ -1083,7 +1193,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative implementation feasibility.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative implementation feasibility.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -1097,11 +1207,12 @@ Risk Manageability: Are implementation risks controllable?
 
 Scoring Guide:
 
-0-20: Nearly impossible to implement with current constraints
-21-40: Very difficult requiring major capability building
-41-60: Moderate difficulty with significant preparation needed
-61-80: Straightforward with minor adjustments required
-81-100: Immediately executable with existing resources
+0: Impossible to implement - discard
+1.00-1.99: Nearly impossible with current constraints
+2.00-2.99: Very difficult requiring major capability building
+3.00-3.99: Moderate difficulty with significant preparation
+4.00-4.79: Straightforward with minor adjustments required
+4.80-5.00: Immediately executable with existing resources
 
 2. SCALE OF IMPACT (Implementation Leverage) - 30% weight
 Measure the implementation impact:
@@ -1113,11 +1224,12 @@ Technical Debt Impact: Does this reduce or increase future complexity?
 
 Scoring Guide:
 
-0-20: Single-use implementation with no leverage
-21-40: Limited reusability with local impact only
-41-60: Moderate scalability across some areas
-61-80: Highly scalable with broad deployment potential
-81-100: Universal implementation framework enabling everything else
+0: Implementation would break existing systems - discard
+1.00-1.99: Single-use implementation with no leverage
+2.00-2.99: Limited reusability with local impact only
+3.00-3.99: Moderate scalability across some areas
+4.00-4.79: Highly scalable with broad deployment potential
+4.80-5.00: Universal implementation framework enabling everything
 
 3. INNOVATION (Implementation Perspective) - 20% weight
 Assess the implementation innovation potential:
@@ -1129,35 +1241,38 @@ Integration Innovation: Does it solve integration challenges in new ways?
 
 Scoring Guide:
 
-0-20: Uses outdated or problematic implementation approaches
-21-40: Standard implementation with no innovation
-41-60: Moderate innovation in execution methods
-61-80: Significant advancement in implementation techniques
-81-100: Revolutionary implementation approach setting new standards
+0: Implementation approach is fundamentally flawed - discard
+1.00-1.99: Uses outdated or problematic approaches
+2.00-2.99: Standard implementation with no innovation
+3.00-3.99: Moderate innovation in execution methods
+4.00-4.79: Significant advancement in implementation techniques
+4.80-5.00: Revolutionary implementation approach setting standards
 
 ## Comparative Evaluation Process
 
 ### Step 1: Initial Implementation Assessment
 Review all ideas to understand the range of execution innovation, feasibility, and scalability.
 
-### Step 2: Relative Execution Ranking
-For each dimension:
-1. Rank ideas by implementation merit
+### Step 2: Relative Ranking
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas by implementation merit
 2. Identify execution leaders and complex implementations
 3. Assess resource and timeline differences
+4. Note meaningful differences between ideas
+5. Identify ideas that should be discarded (score 0)
+6. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The most implementable idea should score between 75-95
-- The most challenging implementation should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative implementation difficulty
+- Ideas that are fundamentally flawed or harmful receive 0
+- The most implementable idea should score between 4.50-5.00
+- The most challenging implementation should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative implementation differences
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear implementation differentiation.
+Round to two decimal places. Ensure scores reflect clear implementation differentiation.
 
 ## Output Format
 
@@ -1167,12 +1282,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive implementation analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive implementation analysis under 100 words]"
   }},
   ...
@@ -1181,8 +1301,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with implementation analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -1197,19 +1318,31 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
 - **Compare Execution Complexity**: Assess relative implementation effort
 - **Force Implementation Differentiation**: Find execution distinctions
 - **Apply Engineering Mindset**: Consider technical realities
 - **Assess Integration Needs**: Compare system dependencies
 - **Consider Team Capabilities**: Evaluate skill requirements
+- **Force Differentiation**: Ensure each idea has a distinct score
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Ignore technical constraints
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
+- Ignore technical constraints
 - Evaluate in implementation isolation
 - Overlook dependency complexities
 
@@ -1226,12 +1359,15 @@ Use comparative execution terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check implementation logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -1253,25 +1389,29 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Implementation Tier (75-95)
-- Best 20% by execution ease
-- Clear, simple implementation
-- Minimal risks and dependencies
+### Discard Tier (Score: 0)
+- Technically impossible to implement
+- Typically 0-10% of ideas (only if truly unexecutable)
 
-### Upper Implementation Middle (55-74)
-- Next 30% of ideas
-- Manageable complexity
+### Bottom Implementation Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Nearly impossible with current resources
+- Extreme implementation barriers
+
+### Lower Implementation Middle (2.00-2.99)
+- Next 25% of ideas
+- Very difficult implementation
+- Major capability gaps
+
+### Upper Implementation Middle (3.00-3.99)
+- Middle 30% of ideas
+- Moderate implementation complexity
 - Standard execution challenges
 
-### Lower Implementation Middle (35-54)
-- Middle 30% of ideas
-- Significant complexity
-- Notable implementation hurdles
-
-### Bottom Implementation Tier (15-34)
-- Bottom 20% of ideas
-- Very difficult execution
-- Major implementation barriers
+### Top Implementation Tier (4.00-5.00)
+- Top 25% of ideas
+- Straightforward to immediate implementation
+- Clear execution path
 
 ## Implementation Patterns Reference
 Consider these approaches:
@@ -1286,17 +1426,17 @@ Consider these approaches:
 [
   {{
     "ideaId": 42,
-    "rating": 89,
+    "rating": 4.89,
     "comment": "Simplest implementation using existing infrastructure unlike all alternatives. Deploys in weeks versus months for others. Requires only current team skills while competitors need specialists. Minor integration complexity compared to other options. Immediate implementation recommended."
   }},
   {{
     "ideaId": 17,
-    "rating": 66,
+    "rating": 3.89,
     "comment": "Moderate complexity exceeding easy options but simpler than bottom tier. Better technical approach than legacy alternatives. Requires some new tooling unlike top choice. Timeline longer but more predictable than complex options. Pilot before full rollout."
   }},
   {{
     "ideaId": 203,
-    "rating": 29,
+    "rating": 2.89,
     "comment": "Most complex implementation requiring complete architecture rebuild unlike others. Longest timeline with highest resource needs among all options. Technical risks exceed every alternative. Multiple critical dependencies versus standalone options. Defer for simpler alternatives."
   }}
 ]
@@ -1304,7 +1444,7 @@ Consider these approaches:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate implementation merit through Innovation, Practicality, and Scale from an EXECUTION perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative implementation position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate implementation merit through Innovation, Practicality, and Scale from an EXECUTION perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative implementation position.*
 """
 
 ###########################################################
@@ -1346,7 +1486,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative innovation merit.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative innovation merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -1359,11 +1499,13 @@ Resource Alignment: Does this match available capabilities?
 Timeline Fit: Does this align with project phases and milestones?
 Scoring Guide:
 
-0-20: Misaligned with project goals or counterproductive
-21-40: Tangentially related with poor strategic fit
-41-60: Moderate alignment with some gaps
-61-80: Strong alignment with minor adjustments needed
-81-100: Perfect strategic fit addressing core objectives
+0: Completely misaligned or counterproductive - discard
+1.00-1.99: Misaligned with project goals
+2.00-2.99: Tangentially related with poor strategic fit
+3.00-3.99: Moderate alignment with some gaps
+4.00-4.79: Strong alignment with minor adjustments needed
+4.80-5.00: Perfect strategic fit addressing core objectives
+
 2. SCALE OF IMPACT (Transformative Potential) - 30% weight
 Measure the innovation impact magnitude:
 
@@ -1373,11 +1515,13 @@ Sustainability: Will impacts persist and grow over time?
 Catalytic Effect: Does this enable further innovations?
 Scoring Guide:
 
-0-20: Negligible impact with no meaningful change
-21-40: Minor improvements affecting few areas
-41-60: Moderate impact with noticeable improvements
-61-80: Major impact transforming key aspects
-81-100: Game-changing impact revolutionizing entire domain
+0: No meaningful impact - discard
+1.00-1.99: Negligible impact with minimal change
+2.00-2.99: Minor improvements affecting few areas
+3.00-3.99: Moderate impact with noticeable improvements
+4.00-4.79: Major impact transforming key aspects
+4.80-5.00: Game-changing impact revolutionizing domain
+
 3. INNOVATION (Novelty and Creativity) - 20% weight
 Assess the innovation breakthrough potential:
 
@@ -1387,35 +1531,38 @@ Paradigm Shift Potential: Could this fundamentally change how things are done?
 Knowledge Advancement: Does it push boundaries of current understanding?
 Scoring Guide:
 
-0-20: Copies existing solutions with no innovation
-21-40: Minor variations on established approaches
-41-60: Moderate innovation with some creative elements
-61-80: Significant innovation with breakthrough aspects
-81-100: Revolutionary innovation redefining possibilities
+0: Copies failed approaches - discard
+1.00-1.99: Copies existing solutions with no innovation
+2.00-2.99: Minor variations on established approaches
+3.00-3.99: Moderate innovation with creative elements
+4.00-4.79: Significant innovation with breakthrough aspects
+4.80-5.00: Revolutionary innovation redefining possibilities
 
 ## Comparative Evaluation Process
 
 ### Step 1: Initial Innovation Assessment
 Review all ideas to understand the range of novelty, strategic fit, and transformative potential.
 
-### Step 2: Relative Innovation Ranking
-For each dimension:
-1. Rank ideas by innovation merit
+### Step 2: Relative Ranking
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas by innovation merit
 2. Identify breakthrough innovations versus incremental improvements
 3. Assess strategic alignment differences
+4. Note meaningful differences between ideas
+5. Identify ideas that should be discarded (score 0)
+6. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The most innovative idea should score between 75-95
-- The least innovative should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative innovation value
+- Ideas that are fundamentally flawed or harmful receive 0
+- The most innovative idea should score between 4.50-5.00
+- The least innovative should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative innovative differences
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear innovation differentiation.
+Round to two decimal places. Ensure scores reflect clear innovation differentiation.
 
 ## Output Format
 
@@ -1425,12 +1572,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive innovation analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive innovation analysis under 100 words]"
   }},
   ...
@@ -1439,8 +1591,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with innovation analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -1455,19 +1608,31 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
 - **Compare Innovation Levels**: Assess relative novelty and creativity
 - **Force Innovation Differentiation**: Find meaningful distinctions
 - **Apply Strategic Lens**: Evaluate project alignment
 - **Assess Breakthrough Potential**: Compare transformative possibilities
 - **Consider Innovation Portfolio**: How ideas complement each other
+- **Force Differentiation**: Ensure each idea has a distinct score
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Confuse complexity with innovation
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
+- Confuse complexity with innovation
 - Evaluate in innovation isolation
 - Overlook incremental value
 
@@ -1484,12 +1649,15 @@ Use comparative innovation terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check innovation logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -1511,25 +1679,29 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Innovation Tier (75-95)
-- Best 20% by innovation merit
-- True breakthroughs
-- Perfect strategic alignment
+### Discard Tier (Score: 0)
+- Completely misaligned or counterproductive to project
+- Typically 0-10% of ideas (only if fundamentally wrong)
 
-### Upper Innovation Middle (55-74)
-- Next 30% of ideas
-- Strong innovation
+### Bottom Innovation Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Minimal innovation or strategic fit
+- Copies existing solutions
+
+### Lower Innovation Middle (2.00-2.99)
+- Next 25% of ideas
+- Limited novelty
+- Weak strategic alignment
+
+### Upper Innovation Middle (3.00-3.99)
+- Middle 30% of ideas
+- Moderate innovation
 - Good strategic fit
 
-### Lower Innovation Middle (35-54)
-- Middle 30% of ideas
-- Incremental innovation
-- Moderate alignment
-
-### Bottom Innovation Tier (15-34)
-- Bottom 20% of ideas
-- Minimal innovation
-- Poor strategic fit
+### Top Innovation Tier (4.00-5.00)
+- Top 25% of ideas
+- Breakthrough to revolutionary innovation
+- Perfect strategic alignment
 
 ## Innovation Types Reference
 Recognize different innovation forms:
@@ -1544,17 +1716,17 @@ Recognize different innovation forms:
 [
   {{
     "ideaId": 42,
-    "rating": 88,
+    "rating": 4.23,
     "comment": "Most innovative approach creating new paradigm unlike incremental alternatives. Perfect alignment with project objectives surpassing all others. Breakthrough potential exceeds conventional options significantly. Only limitation is ambitious scope. Prioritize for maximum innovation impact."
   }},
   {{
     "ideaId": 17,
-    "rating": 63,
+    "rating": 3.57,
     "comment": "Solid innovation improving on status quo more than lower-ranked ideas. Good strategic fit though not as aligned as top choice. Creative elements present but less transformative than leaders. Some originality gaps versus breakthroughs. Develop as secondary innovation."
   }},
   {{
     "ideaId": 203,
-    "rating": 32,
+    "rating": 2.32,
     "comment": "Minimal innovation essentially replicating existing solutions unlike creative alternatives. Weak alignment with project goals compared to focused options. Limited transformative potential versus other proposals. Lacks originality of higher-ranked ideas. Deprioritize for more innovative approaches."
   }}
 ]
@@ -1562,7 +1734,7 @@ Recognize different innovation forms:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate innovation merit through Innovation, Practicality, and Scale from a HOLISTIC INNOVATION perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative innovation position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate innovation merit through Innovation, Practicality, and Scale from a HOLISTIC INNOVATION perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative innovation position.*
 """
 
 ###########################################################
@@ -1604,7 +1776,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative regulatory merit.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative regulatory merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -1618,11 +1790,12 @@ Enforcement Risk: How likely is regulatory scrutiny?
 
 Scoring Guide:
 
-0-20: Prohibited or facing insurmountable regulatory barriers
-21-40: Major regulatory obstacles requiring exemptions
-41-60: Moderate compliance complexity with clear pathways
-61-80: Straightforward compliance with established precedents
-81-100: Pre-approved or explicitly encouraged by regulators
+0: Illegal or prohibited - discard
+1.00-1.99: Facing insurmountable regulatory barriers
+2.00-2.99: Major regulatory obstacles requiring exemptions
+3.00-3.99: Moderate compliance complexity with clear pathways
+4.00-4.79: Straightforward compliance with established precedents
+4.80-5.00: Pre-approved or explicitly encouraged by regulators
 
 2. SCALE OF IMPACT (Regulatory Leverage) - 30% weight
 Measure the regulatory impact potential:
@@ -1634,11 +1807,12 @@ Compliance Network Effects: Does this simplify broader compliance?
 
 Scoring Guide:
 
-0-20: Limited to single jurisdiction with high restrictions
-21-40: Few jurisdictions with significant limitations
-41-60: Multiple jurisdictions with manageable variations
-61-80: Most major markets with harmonized compliance
-81-100: Global regulatory alignment with universal applicability
+0: Violates international law - discard
+1.00-1.99: Limited to single jurisdiction with high restrictions
+2.00-2.99: Few jurisdictions with significant limitations
+3.00-3.99: Multiple jurisdictions with manageable variations
+4.00-4.79: Most major markets with harmonized compliance
+4.80-5.00: Global regulatory alignment with universal applicability
 
 3. INNOVATION (Regulatory Perspective) - 20% weight
 Assess the regulatory innovation potential:
@@ -1650,35 +1824,38 @@ Regulatory Efficiency: Does it streamline compliance processes?
 
 Scoring Guide:
 
-0-20: Creates new regulatory violations or compliance gaps
-21-40: Standard compliance with no regulatory innovation
-41-60: Moderate innovation in compliance approach
-61-80: Significant advancement in regulatory management
-81-100: Revolutionary compliance model setting new standards
+0: Creates new violations - discard
+1.00-1.99: Creates regulatory violations or compliance gaps
+2.00-2.99: Standard compliance with no regulatory innovation
+3.00-3.99: Moderate innovation in compliance approach
+4.00-4.79: Significant advancement in regulatory management
+4.80-5.00: Revolutionary compliance model setting new standards
 
 ## Comparative Evaluation Process
 
 ### Step 1: Initial Regulatory Assessment
 Review all ideas to understand the range of compliance innovation, feasibility, and jurisdictional reach.
 
-### Step 2: Relative Compliance Ranking
-For each dimension:
-1. Rank ideas by regulatory merit
+### Step 2: Relative Ranking
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas by regulatory merit
 2. Identify compliance leaders and high-risk proposals
 3. Assess regulatory burden differences
+4. Note meaningful differences between ideas
+5. Identify ideas that should be discarded (score 0)
+6. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The most compliant idea should score between 75-95
-- The highest regulatory risk should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative regulatory position
+- Ideas that are fundamentally flawed or harmful receive 0
+- The most compliant idea should score between 4.50-5.00
+- The highest regulatory risk should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative regulatory position
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear regulatory differentiation.
+Round to two decimal places. Ensure scores reflect clear regulatory differentiation.
 
 ## Output Format
 
@@ -1688,12 +1865,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive regulatory analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive regulatory analysis under 100 words]"
   }},
   ...
@@ -1702,8 +1884,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with regulatory analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -1718,19 +1901,31 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
 - **Compare Compliance Burden**: Assess relative regulatory complexity
 - **Force Regulatory Differentiation**: Find compliance distinctions
 - **Apply Risk-Based Thinking**: Evaluate enforcement probability
 - **Consider Regulatory Trends**: Assess future compliance landscape
 - **Evaluate Compliance Costs**: Compare regulatory overhead
+- **Force Differentiation**: Ensure each idea has a distinct score
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Ignore regulatory red flags
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
+- Ignore regulatory red flags
 - Evaluate in regulatory isolation
 - Overlook jurisdictional differences
 
@@ -1747,12 +1942,15 @@ Use comparative compliance terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check regulatory logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -1774,25 +1972,29 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Regulatory Tier (75-95)
-- Best 20% by compliance ease
-- Clear regulatory alignment
-- Minimal compliance risks
+### Discard Tier (Score: 0)
+- Illegal or prohibited by regulations
+- Typically 0-10% of ideas (only if violates laws)
 
-### Upper Regulatory Middle (55-74)
-- Next 30% of ideas
-- Manageable compliance
-- Standard regulatory requirements
+### Bottom Regulatory Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Severe regulatory barriers
+- High compliance risks
 
-### Lower Regulatory Middle (35-54)
+### Lower Regulatory Middle (2.00-2.99)
+- Next 25% of ideas
+- Major regulatory obstacles
+- Complex compliance requirements
+
+### Upper Regulatory Middle (3.00-3.99)
 - Middle 30% of ideas
-- Significant compliance needs
-- Notable regulatory challenges
+- Manageable regulatory requirements
+- Standard compliance complexity
 
-### Bottom Regulatory Tier (15-34)
-- Bottom 20% of ideas
-- High regulatory risks
-- Major compliance barriers
+### Top Regulatory Tier (4.00-5.00)
+- Top 25% of ideas
+- Clear compliance pathways
+- Regulatory advantages
 
 ## Regulatory Domains Reference
 Consider requirements across:
@@ -1807,17 +2009,17 @@ Consider requirements across:
 [
   {{
     "ideaId": 42,
-    "rating": 84,
+    "rating": 4.19,
     "comment": "Strongest regulatory position with clear compliance precedents unlike uncertain alternatives. Operates freely across jurisdictions versus restricted options. Lower regulatory costs than competing proposals. Only minor data privacy considerations. Proceed with standard compliance."
   }},
   {{
     "ideaId": 17,
-    "rating": 61,
+    "rating": 3.27,
     "comment": "Moderate compliance complexity exceeding simple alternatives but clearer than bottom tier. Better regulatory innovation than traditional approaches. Requires some licenses unlike top choice. Manageable approval timeline versus lengthy options. Implement with compliance modifications."
   }},
   {{
     "ideaId": 203,
-    "rating": 27,
+    "rating": 2.25,
     "comment": "Highest regulatory risk facing potential violations unlike compliant alternatives. Unclear legal framework compared to established options. Multiple jurisdictional barriers versus universal proposals. Enforcement risk exceeds all other ideas. Avoid or seek extensive legal counsel."
   }}
 ]
@@ -1825,7 +2027,7 @@ Consider requirements across:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate regulatory merit through Innovation, Practicality, and Scale from a COMPLIANCE perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative regulatory position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate regulatory merit through Innovation, Practicality, and Scale from a COMPLIANCE perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative regulatory position.*
 """
 
 ###########################################################
@@ -1867,7 +2069,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative sustainability merit.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative sustainability merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -1881,11 +2083,12 @@ Cost-Effectiveness: Is sustainability economically viable?
 
 Scoring Guide:
 
-0-20: Unsustainable to implement with current resources
-21-40: Major barriers to sustainable implementation
-41-60: Moderate challenges with clear sustainability pathways
-61-80: Readily implementable with existing green solutions
-81-100: Immediately deployable with net positive impact
+0: Environmentally destructive - discard
+1.00-1.99: Unsustainable to implement with current resources
+2.00-2.99: Major barriers to sustainable implementation
+3.00-3.99: Moderate challenges with clear sustainability pathways
+4.00-4.79: Readily implementable with existing green solutions
+4.80-5.00: Immediately deployable with net positive impact
 
 2. SCALE OF IMPACT (Environmental Magnitude) - 30% weight
 Measure the sustainability impact scale:
@@ -1897,11 +2100,12 @@ Systemic Change: Catalyzing broader sustainability shifts
 
 Scoring Guide:
 
-0-20: Negative environmental impact at scale
-21-40: Minimal positive impact with limited reach
-41-60: Moderate environmental benefits
-61-80: Significant positive impact across multiple dimensions
-81-100: Transformative planetary-scale benefits
+0: Severe environmental harm - discard
+1.00-1.99: Negative environmental impact at scale
+2.00-2.99: Minimal positive impact with limited reach
+3.00-3.99: Moderate environmental benefits
+4.00-4.79: Significant positive impact across multiple dimensions
+4.80-5.00: Transformative planetary-scale benefits
 
 3. INNOVATION (Sustainability Perspective) - 20% weight
 Assess the sustainability innovation potential:
@@ -1913,11 +2117,12 @@ Regenerative Innovation: Does it restore rather than just reduce harm?
 
 Scoring Guide:
 
-0-20: Reinforces unsustainable practices
-21-40: Standard approach with no sustainability innovation
-41-60: Moderate innovation in environmental solutions
-61-80: Significant advancement in sustainability practices
-81-100: Revolutionary approach transforming sustainability paradigms
+0: Reinforces destructive practices - discard
+1.00-1.99: Reinforces unsustainable practices
+2.00-2.99: Standard approach with no sustainability innovation
+3.00-3.99: Moderate innovation in environmental solutions
+4.00-4.79: Significant advancement in sustainability practices
+4.80-5.00: Revolutionary approach transforming sustainability paradigms
 
 ## Comparative Evaluation Process
 
@@ -1925,23 +2130,25 @@ Scoring Guide:
 Review all ideas to understand the range of environmental innovation, feasibility, and impact magnitude.
 
 ### Step 2: Relative Sustainability Ranking
-For each dimension:
-1. Rank ideas by sustainability merit
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas by sustainability merit
 2. Identify environmental leaders versus harmful proposals
 3. Quantify resource efficiency differences
+4. Note meaningful differences between ideas
+5. Identify ideas that should be discarded (score 0)
+6. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The most sustainable idea should score between 75-95
-- The least sustainable should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative sustainability position
+- Ideas that are fundamentally flawed or harmful receive 0
+- The most sustainable idea should score between 4.50-5.00
+- The least sustainable should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative sustainability position
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear sustainability differentiation.
+Round to two decimal places. Ensure scores reflect clear sustainability differentiation.
 
 ## Output Format
 
@@ -1951,12 +2158,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive sustainability analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive sustainability analysis under 100 words]"
   }},
   ...
@@ -1965,8 +2177,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with sustainability analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -1981,19 +2194,31 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
 - **Compare Environmental Impact**: Assess relative ecological footprint
 - **Force Sustainability Differentiation**: Find environmental distinctions
 - **Apply Lifecycle Thinking**: Consider full cradle-to-grave impacts
 - **Evaluate Circularity**: Compare resource efficiency
 - **Consider Climate Alignment**: Assess decarbonization potential
+- **Force Differentiation**: Ensure each idea has a distinct score
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Ignore environmental externalities
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
+- Ignore environmental externalities
 - Evaluate in sustainability isolation
 - Overlook rebound effects
 
@@ -2010,12 +2235,15 @@ Use comparative environmental terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check sustainability logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -2037,25 +2265,29 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Sustainability Tier (75-95)
-- Best 20% by environmental merit
-- Clear sustainability leaders
-- Net positive impact
+### Discard Tier (Score: 0)
+- Environmentally destructive or severely unsustainable
+- Typically 0-10% of ideas (only if causes ecological harm)
 
-### Upper Sustainability Middle (55-74)
-- Next 30% of ideas
-- Good environmental benefits
-- Positive contribution
-
-### Lower Sustainability Middle (35-54)
-- Middle 30% of ideas
-- Limited sustainability gains
-- Some environmental concerns
-
-### Bottom Sustainability Tier (15-34)
-- Bottom 20% of ideas
+### Bottom Sustainability Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Negative to minimal environmental benefit
 - Poor sustainability profile
-- Negative environmental impact
+
+### Lower Sustainability Middle (2.00-2.99)
+- Next 25% of ideas
+- Limited environmental benefits
+- Below sustainability standards
+
+### Upper Sustainability Middle (3.00-3.99)
+- Middle 30% of ideas
+- Moderate environmental benefits
+- Acceptable sustainability
+
+### Top Sustainability Tier (4.00-5.00)
+- Top 25% of ideas
+- Strong to transformative environmental impact
+- Sustainability leadership
 
 ## Sustainability Frameworks Reference
 Consider impacts across:
@@ -2070,17 +2302,17 @@ Consider impacts across:
 [
   {{
     "ideaId": 42,
-    "rating": 86,
+    "rating": 4.86,
     "comment": "Highest sustainability score achieving carbon negativity unlike other proposals. Circular design exceeds all alternatives in resource efficiency. Immediate implementation feasible with proven green tech. Only limitation is initial energy intensity. Priority for environmental leadership."
   }},
   {{
     "ideaId": 17,
-    "rating": 62,
+    "rating": 3.62,
     "comment": "Moderate sustainability improving on conventional approaches more than bottom tier. Better renewable energy use than fossil-dependent options. Implementation complexity higher versus simpler green alternatives. Some lifecycle concerns compared to circular models. Enhance sustainability features before deployment."
   }},
   {{
     "ideaId": 203,
-    "rating": 24,
+    "rating": 2.24,
     "comment": "Weakest sustainability profile with highest carbon footprint among all ideas. Resource intensity exceeds every alternative significantly. Limited circular potential unlike regenerative options. Creates pollution risks other proposals avoid. Reconsider for greener alternatives."
   }}
 ]
@@ -2088,7 +2320,7 @@ Consider impacts across:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate sustainability merit through Innovation, Practicality, and Scale from an ENVIRONMENTAL perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative sustainability position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate sustainability merit through Innovation, Practicality, and Scale from an ENVIRONMENTAL perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative sustainability position.*
 """
 
 ###########################################################
@@ -2130,7 +2362,7 @@ Each idea in the list follows this structure:
 ## Evaluation Task
 
 ### Primary Objective
-Evaluate ALL submitted ideas comparatively and provide percentage scores from 0 to 100, ensuring meaningful differentiation between ideas. You must distribute scores across the range to reflect relative technical merit.
+Evaluate ALL submitted ideas comparatively and provide scores from 0 to 5.00, ensuring meaningful differentiation between ideas. Score 0 means the idea should be completely discarded. Scores from 1.00 to 5.00 (using up to two decimal places) are for acceptable ideas. You must distribute scores across the range to reflect relative technical merit.
 
 ### Comparative Scoring Framework (Weighted: Practicality 50%, Scale of Impact 30%, Innovation 20%)
 
@@ -2144,11 +2376,12 @@ Technical Risk Level: Are technical risks manageable?
 
 Scoring Guide:
 
-0-20: Technically infeasible with current technology
-21-40: Very difficult requiring bleeding-edge or unproven tech
-41-60: Moderate complexity with some technical challenges
-61-80: Straightforward with mature technologies
-81-100: Immediately implementable with proven tech stack
+0: Technically impossible - discard
+1.00-1.99: Technically infeasible with current technology
+2.00-2.99: Very difficult requiring bleeding-edge or unproven tech
+3.00-3.99: Moderate complexity with some technical challenges
+4.00-4.79: Straightforward with mature technologies
+4.80-5.00: Immediately implementable with proven tech stack
 
 2. SCALE OF IMPACT (Technical Leverage) - 30% weight
 Measure the technical impact magnitude:
@@ -2160,11 +2393,12 @@ Future-Proofing: Long-term technical sustainability
 
 Scoring Guide:
 
-0-20: Creates technical debt with limited benefits
-21-40: Minor technical improvements with local impact
-41-60: Moderate technical gains with decent scalability
-61-80: Significant technical advantages with high scalability
-81-100: Transformative technical platform enabling everything
+0: Would break existing systems - discard
+1.00-1.99: Creates technical debt with limited benefits
+2.00-2.99: Minor technical improvements with local impact
+3.00-3.99: Moderate technical gains with decent scalability
+4.00-4.79: Significant technical advantages with high scalability
+4.80-5.00: Transformative technical platform enabling everything
 
 3. INNOVATION (Technical Perspective) - 20% weight
 Assess the technical innovation potential:
@@ -2176,11 +2410,12 @@ Engineering Excellence: Does it set new standards for quality?
 
 Scoring Guide:
 
-0-20: Uses obsolete or flawed technical approaches
-21-40: Standard technology with no innovation
-41-60: Moderate technical innovation with some novel aspects
-61-80: Significant technical advancement with modern approaches
-81-100: Revolutionary technical breakthrough setting new paradigms
+0: Fundamentally flawed approach - discard
+1.00-1.99: Uses obsolete or flawed technical approaches
+2.00-2.99: Standard technology with no innovation
+3.00-3.99: Moderate technical innovation with some novel aspects
+4.00-4.79: Significant technical advancement with modern approaches
+4.80-5.00: Revolutionary technical breakthrough setting new paradigms
 
 ## Comparative Evaluation Process
 
@@ -2188,23 +2423,25 @@ Scoring Guide:
 Review all ideas to understand the range of technical innovation, feasibility, and scalability.
 
 ### Step 2: Relative Technical Ranking
-For each dimension:
-1. Rank ideas by technical merit
+For each dimension (Innovation, Practicality, Scale):
+1. Rank all ideas by technical merit
 2. Identify technical leaders versus legacy approaches
 3. Assess architecture and performance differences
+4. Note meaningful differences between ideas
+5. Identify ideas that should be discarded (score 0)
+6. Distribute remaining ideas across 1.00-5.00 range
 
 ### Step 3: Score Distribution
 **MANDATORY DISTRIBUTION RULES:**
-- The most technically superior idea should score between 75-95
-- The weakest technical approach should score between 15-40
-- Distribute middle ideas across the range
-- **Minimum 10 point difference** between adjacent ranked ideas
-- No two ideas should have the same score
-- Use full range to show relative technical merit
+- Ideas that are fundamentally flawed or harmful receive 0
+- The most technically superior idea should score between 4.50-5.00
+- The weakest technical approach should score between 1.00-1.50
+- NO two ideas can have the same score - use decimal places to differentiate
+- Use the full scoring range to show relative technical merit
 
 ### Step 4: Final Scoring
 Calculate each idea's score: (Innovation × 0.2) + (Practicality × 0.5) + (Scale × 0.3)
-Round to the nearest integer. Ensure scores reflect clear technical differentiation.
+Round to two decimal places. Ensure scores reflect clear technical differentiation.
 
 ## Output Format
 
@@ -2214,12 +2451,17 @@ Return a JSON array with one object per idea:
 [
   {{
     "ideaId": 123,
-    "rating": 85,
+    "rating": 4.72,
     "comment": "[Comprehensive technical analysis under 100 words]"
   }},
   {{
     "ideaId": 456,
-    "rating": 72,
+    "rating": 0,
+    "comment": "[Explanation why idea should be discarded]"
+  }},
+  {{
+    "ideaId": 789,
+    "rating": 3.41,
     "comment": "[Comprehensive technical analysis under 100 words]"
   }},
   ...
@@ -2228,8 +2470,9 @@ Return a JSON array with one object per idea:
 
 ### CRITICAL OUTPUT REQUIREMENTS:
 - **ideaId**: MUST be the exact integer ID from the input idea's "id" field
-- **rating**: MUST be an integer between 0 and 100 (no percentage sign)
-- **comment**: String under 100 words with technical analysis
+- **rating**: MUST be a number between 0 and 5.00 with up to two decimal places
+- **comment**: String under 100 words with business analysis
+- NO two ideas can have the same rating - use decimals to differentiate
 - The array MUST contain exactly one entry for each input idea
 - NEVER create or modify idea IDs - use exactly what was provided
 
@@ -2244,19 +2487,31 @@ Each comment must be a cohesive narrative (under 100 words) that includes:
 ## Evaluation Principles
 
 ### DO:
-- **Use Exact IDs**: Copy the "id" field exactly as provided
+- **Use Exact IDs**: Copy the "id" field exactly as provided for each idea
+- **Force Differentiation**: Ensure each idea has a distinct score
 - **Compare Architecture Quality**: Assess relative design excellence
 - **Force Technical Differentiation**: Find engineering distinctions
 - **Apply Engineering Rigor**: Evaluate against best practices
 - **Assess Scalability**: Compare growth handling capabilities
 - **Consider Security**: Evaluate security postures
+- **Use Full Range**: Distribute scores from low to high
+- **Compare Directly**: Reference how ideas compare to each other
+- **Maintain Consistency**: Apply criteria uniformly across all ideas
+- **Highlight Differences**: Emphasize what makes each idea unique
+- **Rank Clearly**: Make the relative ranking obvious through scores
+- **Use Decimals**: Leverage two decimal places to ensure uniqueness
+- **Identify Failures**: Give 0 to ideas that should be discarded
 
 ### DON'T:
-- Create or modify idea IDs
+- Create, modify, or hallucinate idea IDs
 - Give similar scores to different ideas
-- Confuse complexity with sophistication
+- Cluster all scores in a narrow range 
+- Use scores outside 0-5.00 range
+- Forget to use decimals for differentiation
+- Evaluate ideas in isolation
 - Mix up which comment belongs to which ID
-- Use percentage signs in ratings
+- Score all ideas as acceptable if some should be discarded
+- Confuse complexity with sophistication
 - Evaluate in technical isolation
 - Overlook technical debt
 
@@ -2273,12 +2528,15 @@ Use comparative technical terms:
 ## Quality Checks
 Before submitting:
 - **Verify each ideaId matches exactly the input "id" field**
-- Confirm NO two ideas have the same rating
-- Ensure ratings span at least 40 points
+- Confirm NO two ideas have the same rating score
+- Ensure scores use appropriate decimal precision
+- Validate all scores are between 0 and 5.00
+- Check that truly unviable ideas receive 0
 - Check technical logic in each comment
-- Validate all ratings are integers between 0-100
+- Check that each comment corresponds to the correct ideaId
 - Ensure each comment is under 100 words
-- Verify output count equals input count
+- Verify the number of output entries equals input ideas
+- Double-check no IDs were created or modified
 
 ## Grounding Rules to Prevent Hallucination
 
@@ -2300,25 +2558,29 @@ Before submitting:
 
 For a set of **N ideas**:
 
-### Top Technical Tier (75-95)
-- Best 20% by technical merit
-- Superior architecture
-- Modern, scalable approach
+### Discard Tier (Score: 0)
+- Technically impossible or fundamentally flawed
+- Typically 0-10% of ideas (only if violates technical principles)
 
-### Upper Technical Middle (55-74)
-- Next 30% of ideas
-- Solid technical approach
-- Good practices
+### Bottom Technical Tier (1.00-1.99)
+- Bottom 20% of acceptable ideas
+- Obsolete or poor technical approach
+- Major technical flaws
 
-### Lower Technical Middle (35-54)
+### Lower Technical Middle (2.00-2.99)
+- Next 25% of ideas
+- Below-standard technology
+- Limited technical merit
+
+### Upper Technical Middle (3.00-3.99)
 - Middle 30% of ideas
 - Adequate technical solution
-- Some limitations
+- Standard architecture
 
-### Bottom Technical Tier (15-34)
-- Bottom 20% of ideas
-- Poor technical approach
-- Significant flaws
+### Top Technical Tier (4.00-5.00)
+- Top 25% of ideas
+- Superior to revolutionary technical approach
+- Exceptional architecture
 
 ## Technical Domains Reference
 Consider aspects across:
@@ -2333,17 +2595,17 @@ Consider aspects across:
 [
   {{
     "ideaId": 42,
-    "rating": 87,
+    "rating": 4.87,
     "comment": "Superior cloud-native architecture outperforming monolithic alternatives. Leverages cutting-edge ML better than conventional approaches. Scales horizontally unlike limited options. Only concern is initial complexity. Build immediately as technical foundation."
   }},
   {{
     "ideaId": 17,
-    "rating": 64,
+    "rating": 4.64,
     "comment": "Solid technical approach exceeding legacy options but less innovative than leaders. Better API design than most alternatives. Mature tech stack though not cutting-edge like top choice. Some scalability limits versus elastic options. Prototype before full commitment."
   }},
   {{
     "ideaId": 203,
-    "rating": 28,
+    "rating": 2.83,
     "comment": "Weakest technical approach using deprecated technologies unlike modern alternatives. Architecture creates more debt than all other options. Performance bottlenecks worse than competing proposals. Security vulnerabilities exceed acceptable levels. Choose superior technical alternatives."
   }}
 ]
@@ -2351,5 +2613,5 @@ Consider aspects across:
 
 ---
 
-*Remember: CRITICAL - Use exact IDs from input. Evaluate technical merit through Innovation, Practicality, and Scale from an ENGINEERING perspective. Force meaningful differentiation. Every idea must have a unique integer rating reflecting relative technical position.*
+*Remember: CRITICAL - Use exact IDs from input. Evaluate technical merit through Innovation, Practicality, and Scale from an ENGINEERING perspective. Force meaningful differentiation. Every idea must have a unique number rating reflecting relative technical position.*
 """
